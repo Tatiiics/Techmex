@@ -18,7 +18,7 @@ public class Ordenes_FacturasModel  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
     private Integer id_orden_factura;
-    @Column(nullable = false)
-    private Integer id_orden;
-    private Integer id_factura;
+    @OneToOne
+    @JoinColumn(name="id_orden")
+    private OrdenesModel orden;
 }
