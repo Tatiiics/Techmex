@@ -1,24 +1,16 @@
-package com.techmex.techmex.Data.Entities;
+package com.techmex.techmex.Dtos;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@Table (name = "Categorias")
+public class CategoriasDto {
 
-public class CategoriasModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_categorias;
     private String categorias;
-
-
 }
