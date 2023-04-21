@@ -1,5 +1,6 @@
 package com.techmex.techmex.Data.Entities;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,12 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table (name = "Clientes")
+@Table (name = "Categorias")
 
-public class ClientesModel {
+public class CategoriasModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_cliente;
-    @Column(nullable = false)//para que no sea null el valor
-    private String nombre;
+    private Integer id_categorias;
+    private String categorias;
+
+
 }

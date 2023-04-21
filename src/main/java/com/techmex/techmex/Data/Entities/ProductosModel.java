@@ -11,12 +11,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table (name = "Clientes")
-
-public class ClientesModel {
+@Table(name = "Productos")
+public class ProductosModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_cliente;
+    private Integer id_producto;
     @Column(nullable = false)//para que no sea null el valor
     private String nombre;
+    private Integer precio;
+    private String imagen;
+    private String descripcion;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categorias")
+    private CategoriasModel categorias;
+
 }
