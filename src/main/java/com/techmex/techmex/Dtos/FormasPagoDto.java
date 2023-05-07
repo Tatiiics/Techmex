@@ -1,18 +1,19 @@
 package com.techmex.techmex.Dtos;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class ServiciosDto {
-    private Integer id_servicio;
-    private boolean llevar;
-    private Integer num_mesas;
-    private Integer id_cliente;
+public class FormasPagoDto {
+    private Integer forma_pago_id;
+
+    private String forma_pago;
 }

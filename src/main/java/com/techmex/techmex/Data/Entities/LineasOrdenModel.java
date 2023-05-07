@@ -17,11 +17,11 @@ import lombok.NoArgsConstructor;
 public class LineasOrdenModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
-    private Integer id_linea_orden;
-    private Integer id_orden;
+    private Integer  linea_orden_id;
+    private Integer orden_id;
 
     @Column(nullable = false)
     private Integer cantidad;
-    private Integer id_producto;
+    private Integer  producto_id;
 
 }

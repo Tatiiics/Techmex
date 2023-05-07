@@ -1,11 +1,10 @@
-package com.techmex.techmex.Data.Providers;
+package com.techmex.techmex.Core.Services;
 
-import com.techmex.techmex.Dtos.LineasOrdenDto;
 import com.techmex.techmex.Dtos.OrdenesDto;
 
 import java.util.List;
 
-public interface IOrdenesProvider {
+public interface IOrdenesService {
     List<OrdenesDto> getOrdenes();
     OrdenesDto getOrdenesId(Integer id);
     OrdenesDto insertOrdenes(Integer mesa_id, Integer usuario_id );

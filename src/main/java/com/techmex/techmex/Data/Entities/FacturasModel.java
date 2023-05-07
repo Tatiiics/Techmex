@@ -1,0 +1,36 @@
+package com.techmex.techmex.Data.Entities;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.Date;
+
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+@Table(name = "Facturas")
+
+public class FacturasModel {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer factura_id;
+    @Column(nullable = false)
+    private Date fecha;
+    @Column(nullable = false)
+    private Double total;
+    @Column(nullable = false)
+    private Boolean efectivo;
+    @Column(nullable = false)
+    private Double cambio;
+
+    @Column(nullable = false)
+    private Integer forma_pago_id;
+    @Column(nullable = false)
+    private Integer orden_id;
+
+}

@@ -8,10 +8,10 @@ public class ProductosMapper implements IMapper<ProductosModel, ProductosDto> {
     @Override
     public ProductosDto mapToDto(ProductosModel productosModel) {
         return ProductosDto.builder()
-                .id_producto(productosModel.getId_producto())
+                .producto_id(productosModel.getId_producto())
                 .nombre(productosModel.getNombre())
                 .precio(productosModel.getPrecio())
-                .id_categorias(productosModel.getCategorias().getId_categorias())
+                .categoria_id(productosModel.getCategorias().getCategoria_id())
                 .imagen(productosModel.getImagen())
                 .descripcion(productosModel.getDescripcion())
                 .build();

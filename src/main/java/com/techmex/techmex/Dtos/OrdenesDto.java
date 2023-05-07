@@ -11,7 +11,8 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class OrdenesDto {
-    private Integer id_orden;
-    private Integer id_servicio;
-    private Integer id_linea_orden;
+    private Integer orden_id;
+    private Integer mesa_id;
+    private Integer usuario_id;
+
 }

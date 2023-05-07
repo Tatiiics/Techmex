@@ -8,8 +8,8 @@ public class CategoriasMapper implements IMapper<CategoriasModel, CategoriasDto>
     @Override
     public CategoriasDto mapToDto(CategoriasModel categoriasModel) {
         return CategoriasDto.builder()
-                .id_categorias(categoriasModel.getId_categorias())
-                .categorias(categoriasModel.getCategorias())
+                .categoria_id(categoriasModel.getCategoria_id())
+                .categoria(categoriasModel.getCategoria())
                 .build();
     }
 

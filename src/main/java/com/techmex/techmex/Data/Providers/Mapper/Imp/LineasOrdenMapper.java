@@ -9,7 +9,12 @@ import org.springframework.stereotype.Component;
 public class LineasOrdenMapper implements IMapper<LineasOrdenModel, LineasOrdenDto> {
     @Override
     public LineasOrdenDto mapToDto(LineasOrdenModel lineasOrdenModel) {
-        return null;
+        return LineasOrdenDto.builder()
+                .linea_orden_id(lineasOrdenModel.getLinea_orden_id())
+                //.orden_id(lineasOrdenModel.getOrden_id())
+                .cantidad(lineasOrdenModel.getCantidad())
+                //.producto_id(lineasOrdenModel.getProducto_id())
+                .build();
     }
 
     @Override
