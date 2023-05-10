@@ -1,3 +1,4 @@
+
 package com.techmex.techmex.Dtos;
 
 import lombok.AllArgsConstructor;
@@ -9,9 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class OrdenesDto {
-    private Integer orden_id;
-    private Integer mesa_id;
-    private Integer usuario_id;
+public class MesasDto {
+    private Integer id_mesas;
+    private Integer capacidad;
+    private Integer qr;
+    private boolean llevar;
+
 
 }

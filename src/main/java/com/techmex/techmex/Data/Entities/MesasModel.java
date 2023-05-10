@@ -1,3 +1,4 @@
+
 package com.techmex.techmex.Data.Entities;
 
 import javax.persistence.*;
@@ -11,12 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "Formas_Pago")
-
-public class FormasPagoModel {
+@Table (name = "Mesas")
+public class MesasModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer forma_pago_id;
-    @Column(nullable = false)
-    private String forma_pago;
+    private Integer id_mesas;
+    private Integer capacidad;
+    private String QR;
+    private boolean llevar;
+
 }

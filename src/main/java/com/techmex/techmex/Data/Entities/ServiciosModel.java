@@ -11,16 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name="Ordenes")
-public class OrdenesModel {
+@Table(name="Servicios")
+public class ServiciosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
-    private Integer orden_id;
- /*   @ManyToOne
-    @JoinColumn(name = mesa_id)
-    private MesasModel mesa_id;*/
-   /* @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private UsuariosModel usuario_Id;*/
+    private Integer id_servicio;
+    @Column(nullable = false)
+    private Boolean llevar;
+    private Integer num_mesas;
+    private Integer id_cliente;
 }

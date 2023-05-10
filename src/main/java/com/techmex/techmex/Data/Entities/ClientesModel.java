@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "Formas_Pago")
+@Table (name = "Clientes")
 
-public class FormasPagoModel {
+public class ClientesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer forma_pago_id;
-    @Column(nullable = false)
-    private String forma_pago;
+    private Integer id_cliente;
+    @Column(nullable = false)//para que no sea null el valor
+    private String nombre;
 }
