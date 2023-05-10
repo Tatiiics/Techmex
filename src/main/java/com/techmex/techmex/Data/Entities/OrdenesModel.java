@@ -16,10 +16,11 @@ public class OrdenesModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
-    private Integer id_orden;
-    @Column(nullable = false)
-    private Integer id_servicio;
-    @ManyToOne
-    @JoinColumn(name = "id_linea_orden")
-    private LineasOrdenModel id_linea_orden;
+    private Integer orden_id;
+ /*   @ManyToOne
+    @JoinColumn(name = mesa_id)
+    private MesasModel mesa_id;*/
+   /* @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuariosModel usuario_Id;*/
 }

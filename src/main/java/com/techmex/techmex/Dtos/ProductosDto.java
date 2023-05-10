@@ -11,10 +11,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProductosDto {
 
-    private Integer id_producto;
+    private Integer producto_id;
     private String nombre;
     private Integer precio;
-    private Integer id_categorias;
+    private Integer categoria_id;
     private String imagen;
     private String descripcion;
 

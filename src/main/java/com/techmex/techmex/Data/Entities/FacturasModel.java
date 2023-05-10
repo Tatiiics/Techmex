@@ -13,9 +13,9 @@ import java.util.Date;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name = "Factura")
+@Table(name = "Facturas")
 
-public class FacturaModel {
+public class FacturasModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer factura_id;
@@ -27,4 +27,13 @@ public class FacturaModel {
     private Boolean efectivo;
     @Column(nullable = false)
     private Double cambio;
+
+    @ManyToOne
+    @JoinColumn(name="formaPago_id")
+    private FormasPagoModel formasPago;
+
+    @OneToOne
+    @JoinColumn(name="orden_id")
+    private OrdenesModel orden;
+
 }

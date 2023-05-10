@@ -15,15 +15,17 @@ import lombok.NoArgsConstructor;
 public class ProductosModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_producto;
-    @Column(nullable = false)//para que no sea null el valor
+    private Integer producto_id;
+    @Column(nullable = false, length = 50 )//para que no sea null el valor
     private String nombre;
+    @Column(nullable = false, length = 6)
     private Integer precio;
     private String imagen;
+    @Column(length = 250)
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "id_categorias")
-    private CategoriasModel categorias;
+    @JoinColumn(name = "categoria_id")
+    private CategoriasModel categoria;
 
 }
