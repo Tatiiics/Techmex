@@ -4,7 +4,9 @@ package com.techmex.techmex.Data.Providers.Mapper.Imp;
 import com.techmex.techmex.Data.Entities.UsuariosModel;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.UsuariosDto;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuariosMapper implements IMapper<UsuariosModel, UsuariosDto> {
     @Override
     public UsuariosDto mapToDto(UsuariosModel usuariosModel) {
