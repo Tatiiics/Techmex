@@ -1,4 +1,3 @@
-
 package com.techmex.techmex.Data.Entities;
 
 import javax.persistence.*;
@@ -12,15 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table (name = "Usuarios")
-public class UsuariosModel {
+@Table (name = "Clientes")
+
+public class ClientesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_usuario;
+    private Integer id_cliente;
+    @Column(nullable = false)//para que no sea null el valor
     private String nombre;
-    private String email;
-    private String contrasenia;
-    private boolean empleado;
-    private boolean admin;
-
 }

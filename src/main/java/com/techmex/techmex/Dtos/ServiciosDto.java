@@ -9,9 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class OrdenesDto {
-    private Integer orden_id;
-    private Integer mesa_id;
-    private Integer usuario_id;
-
+public class ServiciosDto {
+    private Integer id_servicio;
+    private boolean llevar;
+    private Integer num_mesas;
+    private Integer id_cliente;
 }

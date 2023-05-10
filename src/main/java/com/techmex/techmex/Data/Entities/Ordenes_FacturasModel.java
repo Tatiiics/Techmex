@@ -1,5 +1,6 @@
 package com.techmex.techmex.Data.Entities;
 
+
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,16 +12,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-@Table(name="Ordenes")
-public class OrdenesModel {
+@Table(name="Ordenes_Facturas")
+public class Ordenes_FacturasModel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
-    private Integer orden_id;
- /*   @ManyToOne
-    @JoinColumn(name = mesa_id)
-    private MesasModel mesa_id;*/
-   /* @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private UsuariosModel usuario_Id;*/
+    private Integer id_orden_factura;
+    @OneToOne
+    @JoinColumn(name="id_orden")
+    private OrdenesModel orden;
 }
