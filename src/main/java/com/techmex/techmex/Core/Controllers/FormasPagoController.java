@@ -14,10 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/formasPago")
 public class FormasPagoController {
+    /*
     private final IFormasPagoService formasPagoService;
     @GetMapping("/lista")
     public List<CategoriasDto> listaCategorias(){
             return formasPagoService.get
 
-    }
+    }*/
 }

@@ -1,6 +1,5 @@
 package com.techmex.techmex.Dtos;
 
-import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
