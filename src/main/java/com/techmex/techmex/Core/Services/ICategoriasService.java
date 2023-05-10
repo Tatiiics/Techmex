@@ -5,7 +5,7 @@ import com.techmex.techmex.Dtos.CategoriasDto;
 import java.util.List;
 
 public interface ICategoriasService {
-    List<CategoriasDto> getCategorias();
+    List<CategoriasDto> getListaCategorias();
     CategoriasDto getCategoriasId(Integer id);
     CategoriasDto insertCategorias(String categoria);
 

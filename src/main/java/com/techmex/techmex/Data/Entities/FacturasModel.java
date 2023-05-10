@@ -28,9 +28,12 @@ public class FacturasModel {
     @Column(nullable = false)
     private Double cambio;
 
-    @Column(nullable = false)
-    private Integer forma_pago_id;
-    @Column(nullable = false)
-    private Integer orden_id;
+    @ManyToOne
+    @JoinColumn(name="formaPago_id")
+    private FormasPagoModel formasPago;
+
+    @OneToOne
+    @JoinColumn(name="orden_id")
+    private OrdenesModel orden;
 
 }

@@ -15,9 +15,11 @@ import lombok.NoArgsConstructor;
 @Table (name = "Categorias")
 
 public class CategoriasModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoria_id;
+    @Column(length = 12)
     private String categoria;
 
 

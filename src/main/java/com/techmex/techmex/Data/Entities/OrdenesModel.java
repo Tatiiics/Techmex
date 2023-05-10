@@ -17,9 +17,10 @@ public class OrdenesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
     private Integer orden_id;
-    @Column(nullable = false)
-    private Integer mesa_id;
-    @ManyToOne
+ /*   @ManyToOne
+    @JoinColumn(name = mesa_id)
+    private MesasModel mesa_id;*/
+   /* @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private UsuariosModel usuario_Id;
+    private UsuariosModel usuario_Id;*/
 }

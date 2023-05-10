@@ -4,7 +4,11 @@ package com.techmex.techmex.Data.Providers.Mapper.Imp;
 import com.techmex.techmex.Data.Entities.FormasPagoModel;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.FormasPagoDto;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
+@AllArgsConstructor
 public class FormasPagoMapper implements IMapper<FormasPagoModel, FormasPagoDto> {
     @Override
     public FormasPagoDto mapToDto(FormasPagoModel formasPagoModel) {

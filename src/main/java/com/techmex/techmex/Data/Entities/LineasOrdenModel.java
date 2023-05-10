@@ -18,10 +18,15 @@ public class LineasOrdenModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // autoincremento del id
     private Integer  linea_orden_id;
-    private Integer orden_id;
+
 
     @Column(nullable = false)
     private Integer cantidad;
-    private Integer  producto_id;
+    @ManyToOne
+    @JoinColumn(name = "orden_id")
+    private OrdenesModel orden;
+    @ManyToOne
+    @JoinColumn(name = "producto_id")
+    private ProductosModel producto;
 
 }
