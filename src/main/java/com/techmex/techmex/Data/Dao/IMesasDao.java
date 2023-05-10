@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Dao;public interface IMesasDao {
-=======
+
 package com.techmex.techmex.Data.Dao;
 
 import com.techmex.techmex.Data.Entities.MesasModel;
@@ -11,5 +9,5 @@ public interface IMesasDao extends JpaRepository<MesasModel, Integer> {
 
     Optional<MesasModel> findById(Integer id);
 
->>>>>>> Stashed changes
+
 }

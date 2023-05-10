@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Dtos;public class MesasDto {
-=======
+
 package com.techmex.techmex.Dtos;
 
 import lombok.AllArgsConstructor;
@@ -19,5 +17,4 @@ public class MesasDto {
     private boolean llevar;
 
 
->>>>>>> Stashed changes
 }

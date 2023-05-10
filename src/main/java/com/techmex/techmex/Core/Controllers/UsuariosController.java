@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Core.Controllers;public class UsuariosController {
-=======
 package com.techmex.techmex.Core.Controllers;
 
 import com.techmex.techmex.Core.Services.IUsuariosService;
@@ -49,5 +46,4 @@ public class UsuariosController {
         usuariosService.deleteUsuariosId(id);
     }
 
->>>>>>> Stashed changes
 }

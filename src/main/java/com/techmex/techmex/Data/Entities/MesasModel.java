@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Entities;public class MesasModel {
-=======
+
 package com.techmex.techmex.Data.Entities;
 
 import jakarta.persistence.*;
@@ -23,5 +21,4 @@ public class MesasModel {
     private String QR;
     private boolean llevar;
 
->>>>>>> Stashed changes
 }

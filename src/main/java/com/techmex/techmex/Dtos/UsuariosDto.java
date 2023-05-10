@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Dtos;public class UsuariosDto {
-=======
+
 package com.techmex.techmex.Dtos;
 
 import lombok.AllArgsConstructor;
@@ -20,5 +18,5 @@ public class UsuariosDto {
     private String contrasenia;
     private boolean empleado;
     private boolean admin;
->>>>>>> Stashed changes
+
 }

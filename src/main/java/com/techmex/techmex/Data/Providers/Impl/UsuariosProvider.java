@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Providers.Impl;public class UsuariosProvider {
-=======
 package com.techmex.techmex.Data.Providers.Impl;
 
 import com.techmex.techmex.Data.Dao.IUsuariosDao;
@@ -76,6 +73,4 @@ public class UsuariosProvider implements IUsuariosProvider {
         iUsuariosDao.deleteById(id);
     }
 
-
->>>>>>> Stashed changes
 }

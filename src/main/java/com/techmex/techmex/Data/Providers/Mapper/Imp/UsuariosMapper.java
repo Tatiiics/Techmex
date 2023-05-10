@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Providers.Mapper.Imp;public class UsuariosMapper {
-=======
 package com.techmex.techmex.Data.Providers.Mapper.Imp;
 
 
@@ -25,5 +22,5 @@ public class UsuariosMapper implements IMapper<UsuariosModel, UsuariosDto> {
     public UsuariosModel mapToEntity(UsuariosDto usuariosDto) {
         return null;
     }
->>>>>>> Stashed changes
+
 }

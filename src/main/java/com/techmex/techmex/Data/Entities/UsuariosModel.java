@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Entities;public class UsuariosModel {
-=======
+
 package com.techmex.techmex.Data.Entities;
 
 import jakarta.persistence.*;
@@ -25,5 +23,4 @@ public class UsuariosModel {
     private boolean empleado;
     private boolean admin;
 
->>>>>>> Stashed changes
 }

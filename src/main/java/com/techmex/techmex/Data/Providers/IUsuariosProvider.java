@@ -1,6 +1,3 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Data.Providers.Mapper;public interface IUsuariosProvider {
-=======
 package com.techmex.techmex.Data.Providers;
 
 import com.techmex.techmex.Dtos.UsuariosDto;
@@ -15,5 +12,4 @@ public interface IUsuariosProvider {
      UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia, boolean empleado, boolean admin);
      void deleteUsuariosId(Integer id);
 
->>>>>>> Stashed changes
 }

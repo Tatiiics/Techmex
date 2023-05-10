@@ -1,6 +1,4 @@
-<<<<<<< Updated upstream
-package com.techmex.techmex.Core.Services.Impl;public class UsuariosService {
-=======
+
 package com.techmex.techmex.Core.Services.Impl;
 
 import com.techmex.techmex.Core.Services.IUsuariosService;
@@ -43,5 +41,4 @@ public class UsuariosService implements IUsuariosService {
 
     }
 
->>>>>>> Stashed changes
 }
