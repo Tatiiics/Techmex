@@ -13,7 +13,7 @@ import java.util.List;
 public class OrdenesService implements IOrdenesService {
     private final IOrdenesProvider ordenesProvider;
     @Override
-    public List<OrdenesDto> getOrdenes() {
+    public List<OrdenesDto> getListaOrdenes() {
         return ordenesProvider.getOrdenes();
     }
 

@@ -9,6 +9,6 @@ public interface IFacturasProvider {
     List<FacturasDto> getFacturas();
     FacturasDto getFacturasId(Integer id);
     FacturasDto insertFacturas(Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id);
-    FacturasDto update(Integer id,Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id);
+    FacturasDto updateFacturas(Integer id,Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id);
     void deleteFacturasId(Integer id);
 }
