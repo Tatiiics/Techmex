@@ -14,11 +14,15 @@ import lombok.NoArgsConstructor;
 @Builder
 @Table (name = "Mesas")
 public class MesasModel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_mesas;
+
     private Integer capacidad;
+
     private String QR;
+
     private boolean llevar;
 
 }
