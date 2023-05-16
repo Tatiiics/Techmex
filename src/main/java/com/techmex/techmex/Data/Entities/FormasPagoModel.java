@@ -17,6 +17,7 @@ public class FormasPagoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer forma_pago_id;
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 10)
     private String forma_pago;
 }

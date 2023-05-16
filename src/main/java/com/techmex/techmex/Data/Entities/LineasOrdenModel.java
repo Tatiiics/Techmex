@@ -22,11 +22,13 @@ public class LineasOrdenModel {
 
     @Column(nullable = false)
     private Integer cantidad;
-    @ManyToOne
-    @JoinColumn(name = "orden_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "orden_id" ,
+    foreignKey = @ForeignKey(name = "FK_orden_lineaOrden"))
     private OrdenesModel orden;
     @ManyToOne
-    @JoinColumn(name = "producto_id")
+    @JoinColumn(name = "producto_id",
+    foreignKey = @ForeignKey(name = "FK_orden_producto"))
     private ProductosModel producto;
 
 }

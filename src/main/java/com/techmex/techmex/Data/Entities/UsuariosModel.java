@@ -17,6 +17,7 @@ public class UsuariosModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_usuario;
+
     private String nombre;
     private String email;
     private String contrasenia;

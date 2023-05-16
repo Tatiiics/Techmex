@@ -18,14 +18,15 @@ public class ProductosModel {
     private Integer producto_id;
     @Column(nullable = false, length = 50 )//para que no sea null el valor
     private String nombre;
-    @Column(nullable = false, length = 6)
+    @Column(nullable = false)
     private Integer precio;
     private String imagen;
     @Column(length = 250)
     private String descripcion;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    @ManyToOne(fetch = FetchType.LAZY )
+    @JoinColumn(name = "categoria_id",
+            foreignKey = @ForeignKey(name = "FK_categoria_productos"))
     private CategoriasModel categoria;
 
 }

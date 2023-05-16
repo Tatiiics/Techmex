@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,8 +21,10 @@ public class CategoriasModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer categoria_id;
+
     @Column(length = 12)
     private String categoria;
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy ="categoria")
+    private List<ProductosModel> productos;
 
 }

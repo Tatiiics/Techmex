@@ -33,7 +33,7 @@ public class FacturasService implements IFacturasService {
 
     @Override
     public FacturasDto updateFacturas(Integer id, Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
-        return null;
+        return facturasProvider.updateFacturas(id, fecha, total, efectivo, cambio, forma_pago_id, orden_id);
     }
 
 
@@ -42,4 +42,7 @@ public class FacturasService implements IFacturasService {
     public void deleteFacturasId(Integer id) {
         facturasProvider.deleteFacturasId(id);
     }
+
+
+
 }
