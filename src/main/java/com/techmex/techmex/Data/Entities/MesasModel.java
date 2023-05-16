@@ -21,7 +21,7 @@ public class MesasModel {
 
     private Integer capacidad;
 
-    private String QR;
+    private Integer QR;
 
     private boolean llevar;
 

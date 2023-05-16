@@ -29,21 +29,44 @@ public class MesasProvider implements IMesasProvider {
 
     @Override
     public MesasDto getMesasId(Integer id) {
-        return null;
+        return iMesasDao.findById(id)
+                .map(mapperMesas::mapToDto)
+                .orElse(null);
     }
 
     @Override
     public MesasDto insertMesas(Integer capacidad, Integer qr, boolean llevar) {
-        return null;
+        MesasModel newMesas = MesasModel.builder()
+                .capacidad(capacidad)
+                .QR(qr)
+                .llevar(llevar)
+                .build();
+
+        iMesasDao.save(newMesas);
+        return mapperMesas.mapToDto(newMesas);
     }
 
     @Override
     public MesasDto updateMesas(Integer id, Integer capacidad, Integer qr, boolean llevar) {
-        return null;
+        MesasModel newMesas = iMesasDao.findById(id).orElse(null);
+        newMesas = newMesas.builder()
+                .id_mesas(id)
+                .capacidad(capacidad)
+                .QR(qr)
+                .llevar(llevar)
+                .build();
+        iMesasDao.save(newMesas);
+
+        return mapperMesas.mapToDto(newMesas);
     }
 
     @Override
     public void deleteMesasId(Integer id) {
+        if(!iMesasDao.existsById(id)){
+            throw new RuntimeException("LA MESA NO EXISTE");
+        }
+
+        iMesasDao.deleteById(id);
 
     }
 }
