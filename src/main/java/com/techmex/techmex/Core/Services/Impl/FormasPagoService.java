@@ -14,7 +14,7 @@ public class FormasPagoService implements IFormasPagoService {
 
     private final IFormasPagoProvider formasPagoProvider;
     @Override
-    public List<FormasPagoDto> getFormasPago() {
+    public List<FormasPagoDto>getListaFormasPago() {
         return formasPagoProvider.getFormasPago() ;
     }
 

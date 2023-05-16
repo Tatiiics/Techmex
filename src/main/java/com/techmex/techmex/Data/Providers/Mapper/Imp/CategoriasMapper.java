@@ -19,7 +19,11 @@ public class CategoriasMapper implements IMapper<CategoriasModel, CategoriasDto>
 
     @Override
     public CategoriasModel mapToEntity(CategoriasDto categoriasDto) {
-        return null;
+
+        return CategoriasModel.builder()
+                .categoria_id(categoriasDto.getCategoria_id())
+                .categoria(categoriasDto.getCategoria())
+                .build();
     }
 
 }

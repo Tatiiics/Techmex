@@ -14,7 +14,7 @@ public class LineasOrdenService implements ILineasOrdenService {
 
     private final ILineasOrdenProvider lineasOrdenProvider;
     @Override
-    public List<LineasOrdenDto> getLineasOrden() {
+    public List<LineasOrdenDto> getListaLineasOrden() {
         return lineasOrdenProvider.getLineasOrden();
     }
 

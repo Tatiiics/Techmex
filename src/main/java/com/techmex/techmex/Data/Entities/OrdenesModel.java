@@ -20,7 +20,8 @@ public class OrdenesModel {
  /*   @ManyToOne
     @JoinColumn(name = mesa_id)
     private MesasModel mesa_id;*/
-   /* @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private UsuariosModel usuario_Id;*/
+    @ManyToOne
+    @JoinColumn(name = "usuario_id",
+    foreignKey = @ForeignKey(name = "FK_ordenes_usuarios"))
+    private UsuariosModel usuario_Id;
 }

@@ -57,7 +57,7 @@ public class FacturasProvider implements IFacturasProvider {
     }
 
     @Override
-    public FacturasDto update(Integer id, Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
+    public FacturasDto updateFacturas(Integer id, Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
         OrdenesModel orden = iOrdenesDao.findById(orden_id).orElse(null);
         FormasPagoModel formasPago = iFormasPagoDao.findById(forma_pago_id).orElse(null);
         FacturasModel factura = iFacturasDao.findById(id).orElse(null);

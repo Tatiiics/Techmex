@@ -5,7 +5,7 @@ import com.techmex.techmex.Dtos.OrdenesDto;
 import java.util.List;
 
 public interface IOrdenesService {
-    List<OrdenesDto> getOrdenes();
+    List<OrdenesDto> getListaOrdenes();
     OrdenesDto getOrdenesId(Integer id);
     OrdenesDto insertOrdenes(Integer mesa_id, Integer usuario_id );
     OrdenesDto updateOrdenes(Integer orden_id, Integer mesa_id, Integer usuario_id);

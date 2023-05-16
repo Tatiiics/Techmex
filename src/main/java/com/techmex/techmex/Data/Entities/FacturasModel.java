@@ -29,11 +29,13 @@ public class FacturasModel {
     private Double cambio;
 
     @ManyToOne
-    @JoinColumn(name="formaPago_id")
+    @JoinColumn(name="formaPago_id",
+            foreignKey = @ForeignKey(name = "FK_facturas_formasPago"))
     private FormasPagoModel formasPago;
 
     @OneToOne
-    @JoinColumn(name="orden_id")
+    @JoinColumn(name="orden_id",
+    foreignKey = @ForeignKey(name = "FK_facturas_orden"))
     private OrdenesModel orden;
 
 }
