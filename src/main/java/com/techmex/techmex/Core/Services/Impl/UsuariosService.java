@@ -2,18 +2,36 @@
 package com.techmex.techmex.Core.Services.Impl;
 
 import com.techmex.techmex.Core.Services.IUsuariosService;
+import com.techmex.techmex.Data.Dao.IRolesDao;
+import com.techmex.techmex.Data.Dao.IUsuariosDao;
+import com.techmex.techmex.Data.Entities.RolesModel;
+import com.techmex.techmex.Data.Entities.UsuariosModel;
 import com.techmex.techmex.Data.Providers.IUsuariosProvider;
 import com.techmex.techmex.Dtos.UsuariosDto;
-import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+
+import java.util.Arrays;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
 public class UsuariosService implements IUsuariosService {
 
     private final IUsuariosProvider usuariosProvider;
+    private IUsuariosDao usuariosDao;
+    private IRolesDao rolesDao;
+    private PasswordEncoder passwordEncoder;
+
+    public UsuariosService(IUsuariosProvider usuariosProvider,
+                           IUsuariosDao usuariosDao,
+                           IRolesDao rolesDao,
+                           PasswordEncoder passwordEncoder) {
+        this.usuariosProvider = usuariosProvider;
+        this.usuariosDao = usuariosDao;
+        this.rolesDao = rolesDao;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public List<UsuariosDto> getListaUsuarios() {
@@ -39,6 +57,35 @@ public class UsuariosService implements IUsuariosService {
     public void deleteUsuariosId(Integer id) {
         usuariosProvider.deleteUsuariosId(id);
 
+    }
+
+    @Override
+    public UsuariosModel findByEmail(String email) {
+        return usuariosDao.findByEmail(email);
+    }
+
+
+    @Override
+    public void saveUser(UsuariosDto usuariosDto) {
+        UsuariosModel usuariosModel = new UsuariosModel();
+        usuariosModel.setNombre(usuariosDto.getNombre());
+        usuariosModel.setEmail(usuariosDto.getEmail());
+
+        //encrypt the password once we integrate spring security
+        //usuariosModel.setContrasenia(usuariosDto.getContrasenia());
+
+        usuariosModel.setContrasenia(passwordEncoder.encode(usuariosDto.getContrasenia()));
+        RolesModel rol = rolesDao.findByName("ROLE_ADMIN");
+        if(rol == null){
+            rol = checkRoleExist();
+        }
+        usuariosModel.setRoles(Arrays.asList(rol));
+        usuariosDao.save(usuariosModel);
+    }
+    private RolesModel checkRoleExist() {
+        RolesModel rol = new RolesModel();
+        rol.setName("ROLE_ADMIN");
+        return rolesDao.save(rol);
     }
 
 }

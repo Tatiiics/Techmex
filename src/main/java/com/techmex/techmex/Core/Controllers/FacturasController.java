@@ -6,7 +6,7 @@ import com.techmex.techmex.Dtos.FacturasDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
+
 import java.util.Date;
 import java.util.List;
 
