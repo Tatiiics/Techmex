@@ -1,14 +1,13 @@
 package com.techmex.techmex.Core.Controllers;
 
-import com.techmex.techmex.Core.Services.ICategoriasService;
+
 import com.techmex.techmex.Core.Services.IFormasPagoService;
-import com.techmex.techmex.Dtos.CategoriasDto;
+
 import com.techmex.techmex.Dtos.FormasPagoDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import java.text.Normalizer;
+
 import java.util.List;
 
 @RestController

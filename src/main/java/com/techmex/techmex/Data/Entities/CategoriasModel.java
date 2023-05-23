@@ -1,7 +1,9 @@
 package com.techmex.techmex.Data.Entities;
 
 
-import javax.persistence.*;
+
+
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-@Table (name = "Categorias")
+@Table(name = "Categorias")
 
 public class CategoriasModel {
 

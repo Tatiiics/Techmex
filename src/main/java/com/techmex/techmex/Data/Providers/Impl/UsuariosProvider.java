@@ -41,9 +41,10 @@ public class UsuariosProvider implements IUsuariosProvider {
                .contrasenia(contrasenia)
                .empleado(empleado)
                .admin(admin)
-
                .build();
+
        iUsuariosDao.save(newUsuario);
+
         return mapperUsuarios.mapToDto(newUsuario);
     }
 

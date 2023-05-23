@@ -9,5 +9,6 @@ import java.util.Optional;
 public interface IUsuariosDao extends JpaRepository<UsuariosModel, Integer> {
 
     Optional<UsuariosModel> findById(Integer id);
+    UsuariosModel findByEmail(String email);
 
 }
