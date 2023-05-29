@@ -25,12 +25,10 @@ public class UsuariosService implements IUsuariosService {
 
     public UsuariosService(IUsuariosProvider usuariosProvider,
                            IUsuariosDao usuariosDao,
-                           IRolesDao rolesDao,
-                           PasswordEncoder passwordEncoder) {
+                           IRolesDao rolesDao) {
         this.usuariosProvider = usuariosProvider;
         this.usuariosDao = usuariosDao;
         this.rolesDao = rolesDao;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
