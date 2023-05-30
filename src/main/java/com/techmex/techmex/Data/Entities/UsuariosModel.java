@@ -4,6 +4,8 @@ package com.techmex.techmex.Data.Entities;
 
 
 import javax.persistence.*;
+
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,13 +28,8 @@ public class UsuariosModel {
     private String nombre;
     private String email;
     private String contrasenia;
-    private boolean empleado;
-    private boolean admin;
-    @ManyToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
-    @JoinTable(
-            name="users_roles",
-            joinColumns={@JoinColumn(name="USER_ID", referencedColumnName="id_usuario")},
-            inverseJoinColumns={@JoinColumn(name="ROLE_ID", referencedColumnName="rol_id")})
-    private List<RolesModel> roles = new ArrayList<>();
+
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
 }

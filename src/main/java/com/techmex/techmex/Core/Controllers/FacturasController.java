@@ -4,6 +4,7 @@ import com.techmex.techmex.Core.Services.IFacturasService;
 import com.techmex.techmex.Core.Services.Impl.FacturasService;
 import com.techmex.techmex.Dtos.FacturasDto;
 import lombok.AllArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 

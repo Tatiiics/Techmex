@@ -2,6 +2,7 @@ package com.techmex.techmex.Data.Providers.Impl;
 
 import com.techmex.techmex.Data.Dao.IUsuariosDao;
 import com.techmex.techmex.Data.Entities.UsuariosModel;
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.IUsuariosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.UsuariosDto;
@@ -34,13 +35,13 @@ public class UsuariosProvider implements IUsuariosProvider {
     }
 
     @Override
-    public UsuariosDto insertUsuarios(String nombre, String email,String contrasenia,boolean empleado,boolean admin) {
+    public UsuariosDto insertUsuarios(String nombre, String email,String contrasenia) {
        UsuariosModel newUsuario = UsuariosModel.builder()
                .nombre(nombre)
                .email(email)
                .contrasenia(contrasenia)
-               .empleado(empleado)
-               .admin(admin)
+               // TODO CAMBIAR ESTO AHORA SOLO CREA ADMINS
+               .role(UserRole.ADMIN)
                .build();
 
        iUsuariosDao.save(newUsuario);
@@ -49,15 +50,14 @@ public class UsuariosProvider implements IUsuariosProvider {
     }
 
     @Override
-    public UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia, boolean empleado, boolean admin) {
+    public UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia) {
         UsuariosModel newUsuario = iUsuariosDao.findById(id).orElse(null);
         newUsuario = newUsuario.builder()
                 .id_usuario(id)
                 .nombre(nombre)
                 .email(email)
                 .contrasenia(contrasenia)
-                .empleado(empleado)
-                .admin(admin)
+                .role(UserRole.ADMIN)
                 .build();
         iUsuariosDao.save(newUsuario);
 
@@ -72,6 +72,30 @@ public class UsuariosProvider implements IUsuariosProvider {
         }
 
         iUsuariosDao.deleteById(id);
+    }
+
+    @Override
+    public UsuariosDto findByEmail(String email) {
+        return iUsuariosDao.findByEmail(email)
+                .map(mapperUsuarios::mapToDto)
+                .orElse(null);
+    }
+
+    @Override
+    public boolean existsByUsername(String username) {
+        return iUsuariosDao.findByNombre(username).isPresent();
+    }
+
+    @Override
+    public boolean matchesPasswordByUsername(String username, String password) {
+        return false;
+    }
+
+    @Override
+    public UsuariosDto getByName(String name) {
+        return iUsuariosDao.findByNombre(name)
+                .map(mapperUsuarios::mapToDto)
+                .orElse(null);
     }
 
 }

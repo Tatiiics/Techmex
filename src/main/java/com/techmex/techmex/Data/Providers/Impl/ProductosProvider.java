@@ -6,10 +6,12 @@ import com.techmex.techmex.Data.Dao.IProductosDao;
 
 import com.techmex.techmex.Data.Entities.CategoriasModel;
 import com.techmex.techmex.Data.Entities.ProductosModel;
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.IProductosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 
 import com.techmex.techmex.Dtos.ProductosDto;
+import com.techmex.techmex.Util.Security.SecurityContextHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,9 +26,17 @@ public class ProductosProvider implements IProductosProvider {
     private final IMapper<ProductosModel, ProductosDto> mapperProductos;
     private final ICategoriasDao iCategoriasDao;
 
+    private final SecurityContextHelper securityContextHelper;
 
     @Override
     public List<ProductosDto> getProductos() {
+
+        UserRole rol = securityContextHelper.getUser().getRol();
+
+        if(rol != UserRole.ADMIN) {
+            return null;
+        }
+
         return iProductosDao.findAll().stream()
                 .map(mapperProductos::mapToDto)
                 .collect(Collectors.toList());

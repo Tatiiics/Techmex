@@ -46,7 +46,7 @@ public class AuthController {
     public String registration(@Valid @ModelAttribute("user") UsuariosDto usuario,
                                BindingResult result,
                                Model model){
-        UsuariosModel existing = usuariosService.findByEmail(usuario.getEmail());
+        UsuariosDto existing = usuariosService.findByEmail(usuario.getEmail());
         if (existing != null) {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
@@ -54,7 +54,7 @@ public class AuthController {
             model.addAttribute("usuario", usuario);
             return "register";
         }
-        usuariosService.saveUser(usuario);
+        usuariosService.insertUsuarios(usuario.getNombre(), usuario.getEmail(), usuario.getContrasenia());
         return "redirect:/register?success";
     }
 

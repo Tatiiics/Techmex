@@ -29,14 +29,14 @@ public class UsuariosController {
 
     //POST = INSERT
     @PostMapping("/insertar")
-    public UsuariosDto insertarEmpleado(String nombre, String email, String contrasenia, boolean empleado, boolean admin){
-        return usuariosService.insertUsuarios(nombre, email, contrasenia, empleado, admin);
+    public UsuariosDto insertarEmpleado(String nombre, String email, String contrasenia){
+        return usuariosService.insertUsuarios(nombre, email, contrasenia);
     }
 
     //PUT = UPDATE
     @PutMapping ("/actualizar/{id}")
-    public UsuariosDto updateEmpleado (@PathVariable Integer id, String nombre, String email, String contrasenia, boolean empleado, boolean admin){
-        return usuariosService.updateUsuarios(id, nombre, email, contrasenia, empleado, admin);
+    public UsuariosDto updateEmpleado (@PathVariable Integer id, String nombre, String email, String contrasenia){
+        return usuariosService.updateUsuarios(id, nombre, email, contrasenia);
     }
 
     //DELETE = DELETE

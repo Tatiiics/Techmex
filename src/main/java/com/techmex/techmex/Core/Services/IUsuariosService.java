@@ -11,13 +11,12 @@ public interface IUsuariosService {
     List<UsuariosDto> getListaUsuarios();
     UsuariosDto getUsuariosId (Integer id);
 
-    UsuariosDto insertUsuarios(String nombre, String email, String contrasenia, boolean empleado, boolean admin);
+    UsuariosDto insertUsuarios(String nombre, String email, String contrasenia);
 
-    UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia, boolean empleado, boolean admin);
+    UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia);
 
     void deleteUsuariosId(Integer id);
 
-    UsuariosModel findByEmail(String email);
-    void saveUser(UsuariosDto usuariosDto);
+    UsuariosDto findByEmail(String email);
 
 }
