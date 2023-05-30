@@ -6,10 +6,13 @@ import com.techmex.techmex.Data.Dao.IOrdenesDao;
 import com.techmex.techmex.Data.Entities.FacturasModel;
 import com.techmex.techmex.Data.Entities.FormasPagoModel;
 import com.techmex.techmex.Data.Entities.OrdenesModel;
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.IFacturasProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Data.Providers.Mapper.Imp.FacturasMapper;
 import com.techmex.techmex.Dtos.FacturasDto;
+import com.techmex.techmex.Dtos.UsuariosDto;
+import com.techmex.techmex.Util.Security.SecurityContextHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +27,17 @@ public class FacturasProvider implements IFacturasProvider {
     private final IFormasPagoDao iFormasPagoDao;
     private final IOrdenesDao iOrdenesDao;
     private final IMapper<FacturasModel,FacturasDto> mapperFacturas;
+
+    private final SecurityContextHelper securityContextHelper;
     @Override
     public List<FacturasDto> getFacturas() {
+        UserRole rol = securityContextHelper.getUser().getRol();
+
+        if(rol != UserRole.ADMIN) {
+            return null;
+        }
+
+
         return iFacturasDao.findAll().stream()
                 .map(mapperFacturas::mapToDto)
                 .collect(Collectors.toList());

@@ -1,8 +1,10 @@
 
 package com.techmex.techmex.Dtos;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,7 +26,6 @@ public class UsuariosDto {
     private String email;
     //@NotEmpty(message = "No puede estar el campo contraseña vacío")
     private String contrasenia;
-    private boolean empleado;
-    private boolean admin;
+    public UserRole rol;
 
 }

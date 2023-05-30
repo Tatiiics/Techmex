@@ -2,6 +2,7 @@ package com.techmex.techmex.Data.Providers.Mapper.Imp;
 
 
 import com.techmex.techmex.Data.Entities.UsuariosModel;
+import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.UsuariosDto;
 import org.springframework.stereotype.Component;
@@ -15,8 +16,8 @@ public class UsuariosMapper implements IMapper<UsuariosModel, UsuariosDto> {
                 .nombre(usuariosModel.getNombre())
                 .email(usuariosModel.getEmail())
                 .contrasenia(usuariosModel.getContrasenia())
-                .empleado(usuariosModel.isEmpleado())
-                .admin(usuariosModel.isAdmin())
+                //TODO CAMBIAR A FUTURO AHORA SOLO HACE ADMINS
+                .rol(UserRole.ADMIN)
                 .build();
     }
 

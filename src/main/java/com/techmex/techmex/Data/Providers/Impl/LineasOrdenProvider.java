@@ -9,6 +9,7 @@ import com.techmex.techmex.Data.Entities.ProductosModel;
 import com.techmex.techmex.Data.Providers.ILineasOrdenProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.LineasOrdenDto;
+import com.techmex.techmex.Util.Security.SecurityContextHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -20,10 +21,12 @@ public class LineasOrdenProvider implements ILineasOrdenProvider {
     private final ILineasOrdenDao iLineasOrdenDao;
     private final IProductosDao iProductosDao;
     private final IOrdenesDao iOrdenesDao;
+    private final SecurityContextHelper securityContextHelper;
 
     private final IMapper<LineasOrdenModel, LineasOrdenDto> mapperLineasOrden;
     @Override
     public List<LineasOrdenDto> getLineasOrden() {
+
         return iLineasOrdenDao.findAll().stream()
                 .map(mapperLineasOrden::mapToDto)
                 .collect(Collectors.toList());
