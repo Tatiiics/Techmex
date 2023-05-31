@@ -5,37 +5,65 @@ import com.techmex.techmex.Data.Entities.UsuariosModel;
 import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.IUsuariosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
-import com.techmex.techmex.Dtos.UsuariosDto;
+import com.techmex.techmex.Dtos.UsuariosRegistroDto;
+import com.techmex.techmex.Util.Exceptions.Data.UserNotFoundException;
+import com.techmex.techmex.Util.Security.SecurityContextHelper;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
 public class UsuariosProvider implements IUsuariosProvider {
 
+    private static final String USUARIO_YA_EXISTE = "Ese usuario ya existe!";
     private final IUsuariosDao iUsuariosDao;
 
-    private final IMapper <UsuariosModel, UsuariosDto> mapperUsuarios;
+    private final PasswordEncoder encoder;
+
+    private final SecurityContextHelper securityContextHelper;
+    private final IMapper <UsuariosModel, UsuariosRegistroDto> mapperUsuarios;
 
     @Override
-    public List<UsuariosDto> getUsuarios() {
+    public synchronized UsuariosRegistroDto registrar(UsuariosRegistroDto usuariosRegistroDto) {
+        if(iUsuariosDao.findByEmail(usuariosRegistroDto.getEmail()).isPresent()) {
+            throw new UserNotFoundException(USUARIO_YA_EXISTE);
+        }
+
+        if(iUsuariosDao.findByNombre(usuariosRegistroDto.getNombre()).isPresent()) {
+            throw new UserNotFoundException(USUARIO_YA_EXISTE);
+        }
+
+        UsuariosModel nuevoUsuario = mapperUsuarios.mapToEntity(usuariosRegistroDto);
+        nuevoUsuario.setContrasenia(encoder.encode(nuevoUsuario.getContrasenia()));
+
+
+        return mapperUsuarios.mapToDto(iUsuariosDao.save(nuevoUsuario));
+    }
+
+    @Override
+    public List<UsuariosRegistroDto> getUsuarios() {
+
+        //System.out.println(securityContextHelper.getUser().getNombre());
+
         return iUsuariosDao.findAll().stream()
                 .map(mapperUsuarios::mapToDto)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public  UsuariosDto getUsuariosId(Integer id) {
+    public UsuariosRegistroDto getUsuariosId(Integer id) {
         return iUsuariosDao.findById(id)
                 .map(mapperUsuarios::mapToDto)
                 .orElse(null);
     }
 
     @Override
-    public UsuariosDto insertUsuarios(String nombre, String email,String contrasenia) {
+    public UsuariosRegistroDto insertUsuarios(String nombre, String email, String contrasenia) {
        UsuariosModel newUsuario = UsuariosModel.builder()
                .nombre(nombre)
                .email(email)
@@ -50,7 +78,7 @@ public class UsuariosProvider implements IUsuariosProvider {
     }
 
     @Override
-    public UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia) {
+    public UsuariosRegistroDto updateUsuarios(Integer id, String nombre, String email, String contrasenia) {
         UsuariosModel newUsuario = iUsuariosDao.findById(id).orElse(null);
         newUsuario = newUsuario.builder()
                 .id_usuario(id)
@@ -75,7 +103,7 @@ public class UsuariosProvider implements IUsuariosProvider {
     }
 
     @Override
-    public UsuariosDto findByEmail(String email) {
+    public UsuariosRegistroDto findByEmail(String email) {
         return iUsuariosDao.findByEmail(email)
                 .map(mapperUsuarios::mapToDto)
                 .orElse(null);
@@ -92,10 +120,20 @@ public class UsuariosProvider implements IUsuariosProvider {
     }
 
     @Override
-    public UsuariosDto getByName(String name) {
+    public boolean matchesPassword(String email, String password) {
+        return innerMatchPassword(iUsuariosDao.findByEmail(email), password);
+    }
+
+    @Override
+    public UsuariosRegistroDto getByName(String name) {
         return iUsuariosDao.findByNombre(name)
                 .map(mapperUsuarios::mapToDto)
                 .orElse(null);
     }
+
+    private synchronized boolean innerMatchPassword(Optional<UsuariosModel> user, String rawPassword) {
+        return user.isPresent() && encoder.matches(rawPassword, user.get().getContrasenia());
+    }
+
 
 }

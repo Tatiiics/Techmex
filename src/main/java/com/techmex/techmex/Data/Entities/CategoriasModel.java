@@ -26,7 +26,5 @@ public class CategoriasModel {
 
     @Column(length = 12)
     private String categoria;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy ="categoria")
-    private List<ProductosModel> productos;
 
 }

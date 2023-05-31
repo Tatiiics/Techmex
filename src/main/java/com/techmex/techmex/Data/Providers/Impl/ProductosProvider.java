@@ -6,6 +6,7 @@ import com.techmex.techmex.Data.Dao.IProductosDao;
 
 import com.techmex.techmex.Data.Entities.CategoriasModel;
 import com.techmex.techmex.Data.Entities.ProductosModel;
+import com.techmex.techmex.Data.Entities.enums.CategoriaRol;
 import com.techmex.techmex.Data.Entities.enums.UserRole;
 import com.techmex.techmex.Data.Providers.IProductosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
@@ -30,12 +31,7 @@ public class ProductosProvider implements IProductosProvider {
 
     @Override
     public List<ProductosDto> getProductos() {
-
-        UserRole rol = securityContextHelper.getUser().getRol();
-
-        if(rol != UserRole.ADMIN) {
-            return null;
-        }
+       // System.out.println(securityContextHelper.getUser().getEmail());
 
         return iProductosDao.findAll().stream()
                 .map(mapperProductos::mapToDto)
@@ -50,40 +46,32 @@ public class ProductosProvider implements IProductosProvider {
     }
 
     @Override
-    public ProductosDto insertProductos(String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion) {
-
-       CategoriasModel categoria = iCategoriasDao.findById(categoria_id).orElse(null);
-       ProductosModel producto = ProductosModel.builder()
+    public ProductosDto insertProductos(String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+        ProductosModel producto = ProductosModel.builder()
                 .nombre(nombre)
                 .precio(precio)
-                .categoria(categoria)
-                .imagen(imagen)
                 .descripcion(descripcion)
+                .categoriaRol(categoriaRol)
                 .build();
 
         iProductosDao.save(producto);
         return mapperProductos.mapToDto(producto);
     }
 
-    @Override
-    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion) {
 
-        CategoriasModel categoria = iCategoriasDao.findById(categoria_id).orElse(null);
+    @Override
+    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
         ProductosModel producto = iProductosDao.findById(id).orElse(null);
 
         producto = producto.builder()
-                .producto_id(id)
                 .nombre(nombre)
                 .precio(precio)
-                .categoria(categoria)
-                .imagen(imagen  )
                 .descripcion(descripcion)
+                .categoriaRol(categoriaRol)
                 .build();
 
         iProductosDao.save(producto);
-
         return mapperProductos.mapToDto(producto);
-
     }
 
     @Override

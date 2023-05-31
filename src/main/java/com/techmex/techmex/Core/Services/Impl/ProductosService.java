@@ -1,6 +1,7 @@
 package com.techmex.techmex.Core.Services.Impl;
 
 import com.techmex.techmex.Core.Services.IProductosService;
+import com.techmex.techmex.Data.Entities.enums.CategoriaRol;
 import com.techmex.techmex.Data.Providers.IProductosProvider;
 import com.techmex.techmex.Dtos.ProductosDto;
 import lombok.AllArgsConstructor;
@@ -24,13 +25,13 @@ public class ProductosService implements IProductosService {
     }
 
     @Override
-    public ProductosDto insertProductos(String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion) {
-        return productosProvider.insertProductos(nombre, precio, categoria_id, imagen, descripcion);
+    public ProductosDto insertProductos(String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+        return productosProvider.insertProductos(nombre, precio, descripcion, categoriaRol);
     }
 
     @Override
-    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion) {
-        return productosProvider.updateProductos(id, nombre, precio, categoria_id, imagen, descripcion);
+    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+        return productosProvider.updateProductos(id, nombre, precio, descripcion, categoriaRol);
     }
 
     @Override

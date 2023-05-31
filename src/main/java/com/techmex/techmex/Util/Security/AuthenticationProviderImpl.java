@@ -15,25 +15,25 @@ import java.util.Collections;
 
 @Component
 @AllArgsConstructor
-public class UserManagerServiceImpl implements AuthenticationProvider {
+public class AuthenticationProviderImpl implements AuthenticationProvider {
 
-    private final IUsuariosProvider usuariosProvider;
+    private final IUsuariosProvider userProvider;
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
 
-        if (!usuariosProvider.existsByUsername(name))
+        if (!userProvider.matchesPasswordByUsername(name, password))
             throw new BadCredentialsException("");
 
-        UsuariosRegistroDto dto = usuariosProvider.getByName(name);
+        UsuariosRegistroDto dto = userProvider.getByName(name);
 
-        return new UsernamePasswordAuthenticationToken(dto,null, Collections.singletonList(dto.rol::name));
+        return new UsernamePasswordAuthenticationToken(dto,null, Collections.singletonList(dto.getRol()::name));
     }
 
     @Override
     public boolean supports(Class<?> authentication) {
-        return true;
+        return authentication.isAssignableFrom(UsernamePasswordAuthenticationToken.class);
     }
 }

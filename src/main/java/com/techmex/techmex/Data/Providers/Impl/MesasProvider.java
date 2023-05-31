@@ -3,10 +3,8 @@ package com.techmex.techmex.Data.Providers.Impl;
 import com.techmex.techmex.Data.Dao.IMesasDao;
 import com.techmex.techmex.Data.Entities.MesasModel;
 import com.techmex.techmex.Data.Providers.IMesasProvider;
-import com.techmex.techmex.Data.Providers.IUsuariosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.MesasDto;
-import com.techmex.techmex.Dtos.UsuariosDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
