@@ -1,6 +1,7 @@
 package com.techmex.techmex.Core.Controllers;
 
 import com.techmex.techmex.Core.Services.IProductosService;
+import com.techmex.techmex.Data.Entities.enums.CategoriaRol;
 import com.techmex.techmex.Dtos.ProductosDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,12 @@ public class ProductosController {
         return productosService.getProductosId(id);
     }
     @PostMapping("/insertar")
-    public ProductosDto insertarProductos(String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion){
-        return productosService.insertProductos(nombre, precio, categoria_id, imagen, descripcion);
+    public ProductosDto insertarProductos(String nombre, Integer precio,String descripcion, CategoriaRol categoriaRol){
+        return productosService.insertProductos(nombre, precio , descripcion, categoriaRol);
     }
     @PutMapping("/actualizar/{id}")
-    public ProductosDto actualizarProducto(@PathVariable Integer id, String nombre, Integer precio, Integer categoria_id, String imagen, String descripcion){
-        return productosService.updateProductos(id, nombre, precio, categoria_id, imagen, descripcion);
+    public ProductosDto actualizarProducto(@PathVariable Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol){
+        return productosService.updateProductos(id, nombre, precio, descripcion, categoriaRol);
     }
     @DeleteMapping("/borrar/{id}")
     public void  borrarProducto(@PathVariable Integer id){

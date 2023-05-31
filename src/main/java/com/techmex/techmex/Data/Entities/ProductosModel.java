@@ -1,6 +1,8 @@
 package com.techmex.techmex.Data.Entities;
 
 import javax.persistence.*;
+
+import com.techmex.techmex.Data.Entities.enums.CategoriaRol;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,13 +22,8 @@ public class ProductosModel {
     private String nombre;
     @Column(nullable = false)
     private Integer precio;
-    private String imagen;
     @Column(length = 250)
     private String descripcion;
-
-    @ManyToOne(fetch = FetchType.LAZY )
-    @JoinColumn(name = "categoria_id",
-            foreignKey = @ForeignKey(name = "FK_categoria_productos"))
-    private CategoriasModel categoria;
+    private CategoriaRol categoriaRol;
 
 }

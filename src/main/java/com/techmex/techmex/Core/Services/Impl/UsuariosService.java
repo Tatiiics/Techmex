@@ -2,12 +2,9 @@
 package com.techmex.techmex.Core.Services.Impl;
 
 import com.techmex.techmex.Core.Services.IUsuariosService;
-import com.techmex.techmex.Data.Dao.IUsuariosDao;
-import com.techmex.techmex.Data.Entities.UsuariosModel;
 import com.techmex.techmex.Data.Providers.IUsuariosProvider;
-import com.techmex.techmex.Dtos.UsuariosDto;
+import com.techmex.techmex.Dtos.UsuariosRegistroDto;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -21,22 +18,22 @@ public class UsuariosService implements IUsuariosService {
 
 
     @Override
-    public List<UsuariosDto> getListaUsuarios() {
+    public List<UsuariosRegistroDto> getListaUsuarios() {
         return usuariosProvider.getUsuarios();
     }
 
     @Override
-    public UsuariosDto getUsuariosId(Integer id) {
+    public UsuariosRegistroDto getUsuariosId(Integer id) {
         return usuariosProvider.getUsuariosId(id);
     }
 
     @Override
-    public UsuariosDto insertUsuarios(String nombre, String email, String contrasenia) {
+    public UsuariosRegistroDto insertUsuarios(String nombre, String email, String contrasenia) {
         return usuariosProvider.insertUsuarios(nombre, email, contrasenia);
     }
 
     @Override
-    public UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia) {
+    public UsuariosRegistroDto updateUsuarios(Integer id, String nombre, String email, String contrasenia) {
         return usuariosProvider.updateUsuarios(id, nombre, email, contrasenia);
     }
 
@@ -47,7 +44,7 @@ public class UsuariosService implements IUsuariosService {
     }
 
     @Override
-    public UsuariosDto findByEmail(String email) {
+    public UsuariosRegistroDto findByEmail(String email) {
         return usuariosProvider.findByEmail(email);
     }
 

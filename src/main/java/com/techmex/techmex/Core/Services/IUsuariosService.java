@@ -1,22 +1,21 @@
 
 package com.techmex.techmex.Core.Services;
 
-import com.techmex.techmex.Data.Entities.UsuariosModel;
-import com.techmex.techmex.Dtos.UsuariosDto;
+import com.techmex.techmex.Dtos.UsuariosRegistroDto;
 
 import java.util.List;
 
 public interface IUsuariosService {
 
-    List<UsuariosDto> getListaUsuarios();
-    UsuariosDto getUsuariosId (Integer id);
+    List<UsuariosRegistroDto> getListaUsuarios();
+    UsuariosRegistroDto getUsuariosId (Integer id);
 
-    UsuariosDto insertUsuarios(String nombre, String email, String contrasenia);
+    UsuariosRegistroDto insertUsuarios(String nombre, String email, String contrasenia);
 
-    UsuariosDto updateUsuarios(Integer id, String nombre, String email, String contrasenia);
+    UsuariosRegistroDto updateUsuarios(Integer id, String nombre, String email, String contrasenia);
 
     void deleteUsuariosId(Integer id);
 
-    UsuariosDto findByEmail(String email);
+    UsuariosRegistroDto findByEmail(String email);
 
 }

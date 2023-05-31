@@ -16,12 +16,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class UsuariosDto {
+public class UsuariosRegistroDto {
 
-    private Integer id_usuarios;
     @NotEmpty
     private String nombre;
-    @NotEmpty(message = "El email no puede estar vacío")
     @Email
     private String email;
     //@NotEmpty(message = "No puede estar el campo contraseña vacío")
