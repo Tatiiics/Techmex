@@ -27,15 +27,14 @@ public class FacturasService implements IFacturasService {
     }
 
     @Override
-    public FacturasDto insertFacturas(Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
-        return facturasProvider.insertFacturas(fecha, total, efectivo, cambio, forma_pago_id, orden_id);
+    public FacturasDto insertFacturas(Date fecha, Double total,  Double cambio, String formasPago, Integer orden_id) {
+        return facturasProvider.insertFacturas(fecha, total,  cambio, formasPago, orden_id);
     }
 
     @Override
-    public FacturasDto updateFacturas(Integer id, Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
-        return facturasProvider.updateFacturas(id, fecha, total, efectivo, cambio, forma_pago_id, orden_id);
+    public FacturasDto updateFacturas(Integer id, Date fecha, Double total, Double cambio, String formasPago, Integer orden_id) {
+        return facturasProvider.updateFacturas(id, fecha, total,  cambio, formasPago, orden_id);
     }
-
 
 
     @Override

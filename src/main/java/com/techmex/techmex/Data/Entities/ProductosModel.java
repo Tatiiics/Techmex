@@ -20,7 +20,7 @@ public class ProductosModel {
     private Integer producto_id;
     @Column(nullable = false, length = 50 )//para que no sea null el valor
     private String nombre;
-    @Column(nullable = false)
+    @Column(nullable = false, length =20)
     private Integer precio;
     @Column(length = 250)
     private String descripcion;

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,4 +26,7 @@ public class OrdenesModel {
     @JoinColumn(name = "usuario_id",
     foreignKey = @ForeignKey(name = "FK_ordenes_usuarios"))
     private UsuariosModel usuario_Id;
+
+    @ElementCollection
+    private List<LineasOrdenModel> lineasOrden;
 }

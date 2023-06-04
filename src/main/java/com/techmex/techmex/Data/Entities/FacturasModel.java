@@ -3,6 +3,8 @@ package com.techmex.techmex.Data.Entities;
 
 
 import javax.persistence.*;
+
+import com.techmex.techmex.Data.Entities.enums.FormasPago;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,15 +27,11 @@ public class FacturasModel {
     private Date fecha;
     @Column(nullable = false)
     private Double total;
-    @Column(nullable = false)
-    private Boolean efectivo;
+
     @Column(nullable = false)
     private Double cambio;
-
-    @ManyToOne
-    @JoinColumn(name="formaPago_id",
-            foreignKey = @ForeignKey(name = "FK_facturas_formasPago"))
-    private FormasPagoModel formasPago;
+    @Enumerated(EnumType.STRING)
+    private FormasPago formasPago;
 
     @OneToOne
     @JoinColumn(name="orden_id",

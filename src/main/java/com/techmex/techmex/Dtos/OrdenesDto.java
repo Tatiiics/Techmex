@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -13,5 +15,6 @@ public class OrdenesDto {
     private Integer orden_id;
     private Integer mesa_id;
     private Integer usuario_id;
+    private List<LineasOrdenDto> lineasOrden;
 
 }

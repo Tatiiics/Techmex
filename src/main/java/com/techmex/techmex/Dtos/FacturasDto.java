@@ -1,5 +1,6 @@
 package com.techmex.techmex.Dtos;
 
+import com.techmex.techmex.Data.Entities.enums.FormasPago;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,11 +19,8 @@ public class FacturasDto {
 
     private Double total;
 
-    private Boolean efectivo;
-
     private Double cambio;
 
-    private Integer forma_pago_id;
-
+    private FormasPago formasPago;
     private Integer orden_id;
 }

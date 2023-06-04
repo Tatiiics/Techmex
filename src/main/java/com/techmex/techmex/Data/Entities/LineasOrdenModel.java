@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
+@Embeddable
 @Table(name="LineasOrden")
 
 public class LineasOrdenModel {
