@@ -1,9 +1,9 @@
 package com.techmex.techmex.Data.Providers.Impl;
 
 import com.techmex.techmex.Data.Dao.IFacturasDao;
-import com.techmex.techmex.Data.Dao.IOrdenesDao;
+import com.techmex.techmex.Data.Dao.IUsuariosDao;
 import com.techmex.techmex.Data.Entities.FacturasModel;
-import com.techmex.techmex.Data.Entities.OrdenesModel;
+import com.techmex.techmex.Data.Entities.UsuariosModel;
 import com.techmex.techmex.Data.Entities.enums.FormasPago;
 import com.techmex.techmex.Data.Providers.IFacturasProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 public class FacturasProvider implements IFacturasProvider {
     private final IFacturasDao iFacturasDao;
 
-    private final IOrdenesDao iOrdenesDao;
+    private final IUsuariosDao iUsuariosDao;
     private final IMapper<FacturasModel,FacturasDto> mapperFacturas;
 
     private final SecurityContextHelper securityContextHelper;
@@ -39,17 +39,18 @@ public class FacturasProvider implements IFacturasProvider {
                 .orElse(null);
     }
 
+
+
     @Override
-    public FacturasDto insertFacturas(Date fecha, Double total,   Double cambio, String formasPago, Integer orden_id) {
-        OrdenesModel orden = iOrdenesDao.findById(orden_id).orElse(null);
-        FormasPago formasPago1 = FormasPago.valueOf(formasPago);
+    public FacturasDto insertFacturas(Date fecha, Double total,  int num_mesa, FormasPago formasPago, Integer usuario_id) {
+        UsuariosModel usuario = iUsuariosDao.findById(usuario_id).orElse(null);
+
         FacturasModel factura = FacturasModel.builder()
                 .fecha(fecha)
                 .total(total)
-
-                .cambio(cambio)
-                .formasPago(formasPago1)
-                .orden(orden)
+                .num_mesa(num_mesa)
+                .usuario(usuario)
+                .formasPago(formasPago)
                 .build();
 
         iFacturasDao.save(factura);
@@ -58,19 +59,18 @@ public class FacturasProvider implements IFacturasProvider {
     }
 
     @Override
-    public FacturasDto updateFacturas(Integer id, Date fecha, Double total,   Double cambio, String formasPago, Integer orden_id) {
-        OrdenesModel orden = iOrdenesDao.findById(orden_id).orElse(null);
-        FormasPago formasPago1 = FormasPago.valueOf(formasPago);
+    public FacturasDto updateFacturas(Integer id, Date fecha, Double total,  int num_mesa, FormasPago formasPago, Integer usuario_id) {
+        UsuariosModel usuario = iUsuariosDao.findById(usuario_id).orElse(null);
+
         FacturasModel factura = iFacturasDao.findById(id).orElse(null);
 
         factura = factura.builder()
                 .factura_id(id)
                 .fecha(fecha)
                 .total(total)
-
-                .cambio(cambio)
-                .formasPago(formasPago1)
-                .orden(orden)
+                .num_mesa(num_mesa)
+                .usuario(usuario)
+                .formasPago(formasPago)
                 .build();
 
         iFacturasDao.save(factura);

@@ -13,9 +13,8 @@ import lombok.NoArgsConstructor;
 
 public class LineasOrdenDto {
 
-    private Integer linea_orden_id;
-    private Integer orden_id;
-    private Integer cantidad;
+    private Integer lineasOrden_id;
+    private Integer factura_id;
     private Integer producto_id;
 
 }

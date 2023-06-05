@@ -1,10 +1,10 @@
 package com.techmex.techmex.Data.Providers.Impl;
 
+import com.techmex.techmex.Data.Dao.IFacturasDao;
 import com.techmex.techmex.Data.Dao.ILineasOrdenDao;
-import com.techmex.techmex.Data.Dao.IOrdenesDao;
 import com.techmex.techmex.Data.Dao.IProductosDao;
+import com.techmex.techmex.Data.Entities.FacturasModel;
 import com.techmex.techmex.Data.Entities.LineasOrdenModel;
-import com.techmex.techmex.Data.Entities.OrdenesModel;
 import com.techmex.techmex.Data.Entities.ProductosModel;
 import com.techmex.techmex.Data.Providers.ILineasOrdenProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class LineasOrdenProvider implements ILineasOrdenProvider {
     private final ILineasOrdenDao iLineasOrdenDao;
     private final IProductosDao iProductosDao;
-    private final IOrdenesDao iOrdenesDao;
+    private final IFacturasDao iFacturasDao;
     private final SecurityContextHelper securityContextHelper;
 
     private final IMapper<LineasOrdenModel, LineasOrdenDto> mapperLineasOrden;
@@ -40,14 +40,13 @@ public class LineasOrdenProvider implements ILineasOrdenProvider {
     }
 
     @Override
-    public LineasOrdenDto insertLineasOrden(Integer orden_id, Integer cantidad, Integer producto_id) {
+    public LineasOrdenDto insertLineasOrden(Integer factura_id, Integer producto_id) {
 
         ProductosModel producto = iProductosDao.findById(producto_id).orElse(null);
-        OrdenesModel orden= iOrdenesDao.findById(orden_id).orElse(null);
+        FacturasModel factura= iFacturasDao.findById(factura_id).orElse(null);
 
         LineasOrdenModel lineasOrden = LineasOrdenModel.builder()
-                .orden(orden)
-                .cantidad(cantidad)
+                .factura(factura)
                 .producto(producto)
                 .build();
 
@@ -56,15 +55,14 @@ public class LineasOrdenProvider implements ILineasOrdenProvider {
     }
 
     @Override
-    public LineasOrdenDto updateLineasOrden(Integer id, Integer orden_id, Integer cantidad, Integer producto_id) {
+    public LineasOrdenDto updateLineasOrden(Integer id, Integer factura_id, Integer producto_id) {
         ProductosModel producto = iProductosDao.findById(producto_id).orElse(null);
-        OrdenesModel orden= iOrdenesDao.findById(orden_id).orElse(null);
+        FacturasModel factura= iFacturasDao.findById(factura_id).orElse(null);
         LineasOrdenModel lineasOrden = iLineasOrdenDao.findById(id).orElse(null);
 
         lineasOrden = lineasOrden.builder()
-                .linea_orden_id(id)
-                .orden(orden)
-                .cantidad(cantidad)
+                .lineasOrden_id(id)
+                .factura(factura)
                 .producto(producto)
                 .build();
 

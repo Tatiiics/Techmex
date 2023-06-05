@@ -7,7 +7,7 @@ import java.util.List;
 public interface ILineasOrdenService {
     List<LineasOrdenDto> getListaLineasOrden();
     LineasOrdenDto getLineasOrdenId(Integer id);
-    LineasOrdenDto insertLineasOrden(Integer orden_id, Integer cantidad, Integer producto_id );
-    LineasOrdenDto updateLineasOrden(Integer linea_orden_id, Integer orden_id, Integer cantidad, Integer producto_id);
+    LineasOrdenDto insertLineasOrden(Integer factura_id, Integer producto_id);
+    LineasOrdenDto updateLineasOrden(Integer id, Integer factura_id, Integer producto_id);
     void deleteLineasOrden(Integer id);
 }

@@ -19,8 +19,7 @@ public class FacturasDto {
 
     private Double total;
 
-    private Double cambio;
-
+    private int num_mesa;
     private FormasPago formasPago;
-    private Integer orden_id;
+    private Integer usuario_id;
 }
