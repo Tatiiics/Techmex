@@ -26,6 +26,7 @@ public class UsuariosModel {
     private Integer id_usuario;
 
     private String nombre;
+    @Column(unique=true)
     private String email;
     private String contrasenia;
 

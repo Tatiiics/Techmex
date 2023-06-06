@@ -22,11 +22,11 @@ public class ProductosController {
         return productosService.getProductosId(id);
     }
     @PostMapping("/insertar")
-    public ProductosDto insertarProductos(String nombre, Integer precio,String descripcion, CategoriaRol categoriaRol){
+    public ProductosDto insertarProductos(String nombre, Double precio,String descripcion, CategoriaRol categoriaRol){
         return productosService.insertProductos(nombre, precio , descripcion, categoriaRol);
     }
     @PutMapping("/actualizar/{id}")
-    public ProductosDto actualizarProducto(@PathVariable Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol){
+    public ProductosDto actualizarProducto(@PathVariable Integer id, String nombre, Double precio, String descripcion, CategoriaRol categoriaRol){
         return productosService.updateProductos(id, nombre, precio, descripcion, categoriaRol);
     }
     @DeleteMapping("/borrar/{id}")

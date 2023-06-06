@@ -25,12 +25,12 @@ public class ProductosService implements IProductosService {
     }
 
     @Override
-    public ProductosDto insertProductos(String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+    public ProductosDto insertProductos(String nombre, Double precio, String descripcion, CategoriaRol categoriaRol) {
         return productosProvider.insertProductos(nombre, precio, descripcion, categoriaRol);
     }
 
     @Override
-    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+    public ProductosDto updateProductos(Integer id, String nombre, Double precio, String descripcion, CategoriaRol categoriaRol) {
         return productosProvider.updateProductos(id, nombre, precio, descripcion, categoriaRol);
     }
 

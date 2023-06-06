@@ -16,10 +16,9 @@ public class FacturasMapper implements IMapper<FacturasModel, FacturasDto> {
                 .factura_id(facturasModel.getFactura_id())
                 .fecha(facturasModel.getFecha())
                 .total(facturasModel.getTotal())
-                .efectivo(facturasModel.getEfectivo())
-                .cambio(facturasModel.getCambio())
-                .forma_pago_id((facturasModel.getFormasPago()==null)? null: facturasModel.getFormasPago().getForma_pago_id())
-                .orden_id((facturasModel.getOrden()==null)? null: facturasModel.getOrden().getOrden_id())
+                .formasPago(facturasModel.getFormasPago())
+                .num_mesa(facturasModel.getNum_mesa())
+                .usuario_id((facturasModel.getUsuario()==null)? null: facturasModel.getUsuario().getId_usuario())
                 .build();
     }
 

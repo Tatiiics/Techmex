@@ -24,13 +24,13 @@ public class LineasOrdenService implements ILineasOrdenService {
     }
 
     @Override
-    public LineasOrdenDto insertLineasOrden(Integer orden_id, Integer cantidad, Integer producto_id) {
-        return lineasOrdenProvider.insertLineasOrden(orden_id, cantidad, producto_id);
+    public LineasOrdenDto insertLineasOrden(Integer factura_id, Integer producto_id) {
+        return lineasOrdenProvider.insertLineasOrden(factura_id, producto_id);
     }
 
     @Override
-    public LineasOrdenDto updateLineasOrden(Integer linea_orden_id, Integer orden_id, Integer cantidad, Integer producto_id) {
-        return lineasOrdenProvider.updateLineasOrden(linea_orden_id, orden_id, cantidad, producto_id);
+    public LineasOrdenDto updateLineasOrden(Integer linea_orden_id, Integer factura_id, Integer producto_id) {
+        return lineasOrdenProvider.updateLineasOrden(linea_orden_id, factura_id, producto_id);
     }
 
     @Override

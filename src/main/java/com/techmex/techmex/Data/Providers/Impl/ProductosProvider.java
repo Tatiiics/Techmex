@@ -1,13 +1,13 @@
 package com.techmex.techmex.Data.Providers.Impl;
 
 
-import com.techmex.techmex.Data.Dao.ICategoriasDao;
+
 import com.techmex.techmex.Data.Dao.IProductosDao;
 
-import com.techmex.techmex.Data.Entities.CategoriasModel;
+
 import com.techmex.techmex.Data.Entities.ProductosModel;
 import com.techmex.techmex.Data.Entities.enums.CategoriaRol;
-import com.techmex.techmex.Data.Entities.enums.UserRole;
+
 import com.techmex.techmex.Data.Providers.IProductosProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 
@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 public class ProductosProvider implements IProductosProvider {
     private final IProductosDao iProductosDao;
     private final IMapper<ProductosModel, ProductosDto> mapperProductos;
-    private final ICategoriasDao iCategoriasDao;
 
     private final SecurityContextHelper securityContextHelper;
 
@@ -46,7 +45,7 @@ public class ProductosProvider implements IProductosProvider {
     }
 
     @Override
-    public ProductosDto insertProductos(String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+    public ProductosDto insertProductos(String nombre, Double precio, String descripcion, CategoriaRol categoriaRol) {
         ProductosModel producto = ProductosModel.builder()
                 .nombre(nombre)
                 .precio(precio)
@@ -60,7 +59,7 @@ public class ProductosProvider implements IProductosProvider {
 
 
     @Override
-    public ProductosDto updateProductos(Integer id, String nombre, Integer precio, String descripcion, CategoriaRol categoriaRol) {
+    public ProductosDto updateProductos(Integer id, String nombre, Double precio, String descripcion, CategoriaRol categoriaRol) {
         ProductosModel producto = iProductosDao.findById(id).orElse(null);
 
         producto = producto.builder()

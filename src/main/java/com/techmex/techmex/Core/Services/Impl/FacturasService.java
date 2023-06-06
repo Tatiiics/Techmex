@@ -2,6 +2,7 @@ package com.techmex.techmex.Core.Services.Impl;
 
 
 import com.techmex.techmex.Core.Services.IFacturasService;
+import com.techmex.techmex.Data.Entities.enums.FormasPago;
 import com.techmex.techmex.Data.Providers.IFacturasProvider;
 import com.techmex.techmex.Dtos.FacturasDto;
 import lombok.AllArgsConstructor;
@@ -27,15 +28,14 @@ public class FacturasService implements IFacturasService {
     }
 
     @Override
-    public FacturasDto insertFacturas(Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
-        return facturasProvider.insertFacturas(fecha, total, efectivo, cambio, forma_pago_id, orden_id);
+    public FacturasDto insertFacturas(Date fecha, Double total, int num_mesa, FormasPago formasPago, Integer usuario_id) {
+        return facturasProvider.insertFacturas(fecha, total, num_mesa, formasPago, usuario_id);
     }
 
     @Override
-    public FacturasDto updateFacturas(Integer id, Date fecha, Double total, Boolean efectivo, Double cambio, Integer forma_pago_id, Integer orden_id) {
-        return facturasProvider.updateFacturas(id, fecha, total, efectivo, cambio, forma_pago_id, orden_id);
+    public FacturasDto updateFacturas(Integer id, Date fecha, Double total,  int num_mesa, FormasPago formasPago, Integer usuario_id) {
+        return facturasProvider.updateFacturas(id, fecha, total, num_mesa, formasPago, usuario_id);
     }
-
 
 
     @Override

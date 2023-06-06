@@ -22,12 +22,12 @@ public class LineasOrdenController {
         return lineasOrdenService.getLineasOrdenId(id);
     }
     @PostMapping("/insertar")
-    public LineasOrdenDto insertarLineasOrden(Integer orden_id,Integer cantidad, Integer producto_id){
-        return  lineasOrdenService.insertLineasOrden(orden_id, cantidad, producto_id);
+    public LineasOrdenDto insertarLineasOrden(Integer factura_id, Integer producto_id){
+        return  lineasOrdenService.insertLineasOrden(factura_id, producto_id);
     }
     @PutMapping("/actualizar/{id}")
-    public LineasOrdenDto updateLineasOrden(@PathVariable Integer id,Integer orden_id,Integer cantidad, Integer producto_id){
-        return lineasOrdenService.updateLineasOrden(id, orden_id, cantidad, producto_id);
+    public LineasOrdenDto updateLineasOrden(@PathVariable Integer id,Integer factura_id, Integer producto_id){
+        return lineasOrdenService.updateLineasOrden(id, factura_id, producto_id);
     }
     @DeleteMapping("/borrar/{id}")
     public void borrarLineasOrden(@PathVariable Integer id){
