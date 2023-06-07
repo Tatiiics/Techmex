@@ -1,7 +1,7 @@
 package com.techmex.techmex.Data.Entities.enums;
 
 public enum CategoriaRol {
-    MENU,
+    PRINCIPALES,
     INDIVIDUAL,
     ENTRANTES,
     BEBIDAS,
