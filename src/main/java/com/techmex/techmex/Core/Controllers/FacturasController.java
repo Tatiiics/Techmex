@@ -37,4 +37,9 @@ public class FacturasController {
     public void borrarFacturas(@PathVariable Integer id){
         facturasService.deleteFacturasId(id);
     }
+
+    @PutMapping("/comprar")
+    public void comprar(Double total) {
+        facturasService.comprar(total);
+    }
 }
