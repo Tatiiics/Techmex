@@ -43,6 +43,12 @@ public class FacturasService implements IFacturasService {
         facturasProvider.deleteFacturasId(id);
     }
 
+    @Override
+    public void comprar(Double total) {
+        Date fechaactual = new Date();
+        fechaactual.getTime();
 
+        insertFacturas(fechaactual, total, 1, FormasPago.TARJETA, 1);
+    }
 
 }

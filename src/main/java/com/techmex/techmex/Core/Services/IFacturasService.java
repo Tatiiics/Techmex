@@ -17,4 +17,6 @@ public interface IFacturasService {
 
 
     void deleteFacturasId(Integer id);
+
+    void comprar(Double total);
 }
