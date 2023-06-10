@@ -35,14 +35,13 @@ public class AuthController {
     @PostMapping("/register")
     public UsuariosRegistroDto showRegistrationForm(@RequestParam("email") String email,
                                                     @RequestParam("user") String nombre,
-                                                    @RequestParam("password") String contrasenia,
-                                                    @RequestParam("rol") UserRole userRole){
+                                                    @RequestParam("password") String contrasenia){
         return iAutenticationService.registro(
                 UsuariosRegistroDto.builder()
                         .nombre(nombre)
                         .email(email)
                         .contrasenia(contrasenia)
-                        .rol(userRole)
+                        .rol(UserRole.USER)
                         .build()
         );
 

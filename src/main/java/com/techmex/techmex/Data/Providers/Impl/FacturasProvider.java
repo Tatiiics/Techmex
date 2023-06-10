@@ -4,7 +4,9 @@ import com.techmex.techmex.Data.Dao.IFacturasDao;
 import com.techmex.techmex.Data.Dao.IUsuariosDao;
 import com.techmex.techmex.Data.Entities.FacturasModel;
 import com.techmex.techmex.Data.Entities.UsuariosModel;
+import com.techmex.techmex.Data.Entities.enums.EstadoPedidoRolEnum;
 import com.techmex.techmex.Data.Entities.enums.FormasPago;
+import com.techmex.techmex.Data.Entities.enums.ServicioEnum;
 import com.techmex.techmex.Data.Providers.IFacturasProvider;
 import com.techmex.techmex.Data.Providers.Mapper.IMapper;
 import com.techmex.techmex.Dtos.FacturasDto;
@@ -20,7 +22,6 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class FacturasProvider implements IFacturasProvider {
     private final IFacturasDao iFacturasDao;
-
     private final IUsuariosDao iUsuariosDao;
     private final IMapper<FacturasModel,FacturasDto> mapperFacturas;
 
@@ -42,7 +43,7 @@ public class FacturasProvider implements IFacturasProvider {
 
 
     @Override
-    public FacturasDto insertFacturas(Date fecha, Double total,  int num_mesa, FormasPago formasPago, Integer usuario_id) {
+    public FacturasDto insertFacturas(Date fecha, Double total, int num_mesa, FormasPago formasPago, Integer usuario_id, EstadoPedidoRolEnum estadoPedidoRolEnum, ServicioEnum servicioEnum) {
         UsuariosModel usuario = iUsuariosDao.findById(usuario_id).orElse(null);
 
         FacturasModel factura = FacturasModel.builder()
@@ -51,6 +52,8 @@ public class FacturasProvider implements IFacturasProvider {
                 .num_mesa(num_mesa)
                 .usuario(usuario)
                 .formasPago(formasPago)
+                .estadoPedidoRol(estadoPedidoRolEnum)
+                .servicioEnum(servicioEnum)
                 .build();
 
         iFacturasDao.save(factura);
@@ -84,6 +87,24 @@ public class FacturasProvider implements IFacturasProvider {
             throw new RuntimeException("LA FACTURA NO EXISTE");
     }
         iFacturasDao.deleteById(id);
+    }
+
+    @Override
+    public void cambiarEstadoHecho(Integer facturaId) {
+        FacturasModel factura = iFacturasDao.findById(facturaId).orElse(null);
+
+        factura.setEstadoPedidoRol(EstadoPedidoRolEnum.HECHO);
+
+        iFacturasDao.save(factura);
+    }
+
+    @Override
+    public void cambiarEstadoPagado(Integer facturaId) {
+        FacturasModel factura = iFacturasDao.findById(facturaId).orElse(null);
+
+        factura.setEstadoPedidoRol(EstadoPedidoRolEnum.PAGADO);
+
+        iFacturasDao.save(factura);
     }
 
 

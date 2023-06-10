@@ -10,4 +10,5 @@ public interface ILineasOrdenService {
     LineasOrdenDto insertLineasOrden(Integer factura_id, Integer producto_id);
     LineasOrdenDto updateLineasOrden(Integer id, Integer factura_id, Integer producto_id);
     void deleteLineasOrden(Integer id);
+    List<LineasOrdenDto> getListaLineasOrdenByFacturaId(Integer id);
 }

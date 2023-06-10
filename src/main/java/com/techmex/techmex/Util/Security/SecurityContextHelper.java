@@ -12,10 +12,20 @@ public class SecurityContextHelper {
     }
 
     public UsuariosRegistroDto getUser() {
-        Authentication authentication;
-        return (authentication = getAuthentication()) == null
-                ? null
-                : (UsuariosRegistroDto) authentication.getPrincipal();
+        Authentication authentication = getAuthentication();
+        if (authentication == null) {
+            return null;
+        }
+
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof UsuariosRegistroDto) {
+            return (UsuariosRegistroDto) principal;
+        } else {
+            // Manejar el caso en el que el principal no sea del tipo esperado
+            // Puedes lanzar una excepción, devolver un valor por defecto, etc.
+            return null;
+        }
     }
+
 
 }

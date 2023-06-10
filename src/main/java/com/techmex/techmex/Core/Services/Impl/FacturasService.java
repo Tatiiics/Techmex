@@ -2,9 +2,15 @@ package com.techmex.techmex.Core.Services.Impl;
 
 
 import com.techmex.techmex.Core.Services.IFacturasService;
+import com.techmex.techmex.Data.Entities.enums.EstadoPedidoRolEnum;
 import com.techmex.techmex.Data.Entities.enums.FormasPago;
+import com.techmex.techmex.Data.Entities.enums.ServicioEnum;
 import com.techmex.techmex.Data.Providers.IFacturasProvider;
+import com.techmex.techmex.Data.Providers.ILineasOrdenProvider;
+import com.techmex.techmex.Data.Providers.IProductosProvider;
 import com.techmex.techmex.Dtos.FacturasDto;
+import com.techmex.techmex.Dtos.ProductosDto;
+import com.techmex.techmex.Util.Security.SecurityContextHelper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +21,9 @@ import java.util.List;
 @AllArgsConstructor
 public class FacturasService implements IFacturasService {
     private final IFacturasProvider facturasProvider;
-
+    private final ILineasOrdenProvider iLineasOrdenProvider;
+    private final IProductosProvider iProductosProvider;
+    private final SecurityContextHelper securityContextHelper;
 
     @Override
     public List<FacturasDto> getListaFacturas() {
@@ -28,8 +36,8 @@ public class FacturasService implements IFacturasService {
     }
 
     @Override
-    public FacturasDto insertFacturas(Date fecha, Double total, int num_mesa, FormasPago formasPago, Integer usuario_id) {
-        return facturasProvider.insertFacturas(fecha, total, num_mesa, formasPago, usuario_id);
+    public FacturasDto insertFacturas(Date fecha, Double total, int num_mesa, FormasPago formasPago, Integer usuario_id, EstadoPedidoRolEnum estadoPedidoRolEnum, ServicioEnum servicioEnum) {
+        return facturasProvider.insertFacturas(fecha, total, num_mesa, formasPago, usuario_id, estadoPedidoRolEnum, servicioEnum);
     }
 
     @Override
@@ -43,12 +51,5 @@ public class FacturasService implements IFacturasService {
         facturasProvider.deleteFacturasId(id);
     }
 
-    @Override
-    public void comprar(Double total) {
-        Date fechaactual = new Date();
-        fechaactual.getTime();
-
-        insertFacturas(fechaactual, total, 1, FormasPago.TARJETA, 1);
-    }
 
 }

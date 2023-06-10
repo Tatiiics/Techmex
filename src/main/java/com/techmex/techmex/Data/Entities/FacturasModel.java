@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
+import com.techmex.techmex.Data.Entities.enums.EstadoPedidoRolEnum;
 import com.techmex.techmex.Data.Entities.enums.FormasPago;
+import com.techmex.techmex.Data.Entities.enums.ServicioEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -43,6 +45,8 @@ public class FacturasModel {
      @JoinColumn(name ="id_usuario", foreignKey = @ForeignKey (name="FK_facturas_usuario"))
      private UsuariosModel usuario;
 
+     private EstadoPedidoRolEnum estadoPedidoRol;
+     private ServicioEnum servicioEnum;
     /*@OneToMany
     @JoinColumn(name="orden_id",
     foreignKey = @ForeignKey(name = "FK_facturas_orden"))
