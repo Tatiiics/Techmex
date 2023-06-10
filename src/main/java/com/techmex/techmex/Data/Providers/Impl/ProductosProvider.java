@@ -45,6 +45,13 @@ public class ProductosProvider implements IProductosProvider {
     }
 
     @Override
+    public ProductosDto getProductoNombre(String nombre) {
+        return iProductosDao.findByNombre(nombre)
+                .map(mapperProductos::mapToDto)
+                .orElse(null);
+    }
+
+    @Override
     public ProductosDto insertProductos(String nombre, Double precio, String descripcion, CategoriaRol categoriaRol) {
         ProductosModel producto = ProductosModel.builder()
                 .nombre(nombre)

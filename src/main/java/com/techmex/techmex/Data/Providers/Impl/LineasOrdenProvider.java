@@ -81,4 +81,11 @@ public class LineasOrdenProvider implements ILineasOrdenProvider {
         }
         iLineasOrdenDao.deleteById(id);
     }
+
+    @Override
+    public List<LineasOrdenDto> getAllByFacturasId(Integer id) {
+        return iLineasOrdenDao.findAllByFacturaId(id).stream()
+                .map(mapperLineasOrden::mapToDto)
+                .collect(Collectors.toList());
+    }
 }

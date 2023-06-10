@@ -37,4 +37,9 @@ public class LineasOrdenService implements ILineasOrdenService {
     public void deleteLineasOrden(Integer id) {
         lineasOrdenProvider.deleteLineasOrden(id);
     }
+
+    @Override
+    public List<LineasOrdenDto> getListaLineasOrdenByFacturaId(Integer id) {
+        return lineasOrdenProvider.getAllByFacturasId(id);
+    }
 }

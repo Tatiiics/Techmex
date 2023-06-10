@@ -7,6 +7,7 @@ import java.util.List;
 public interface IProductosProvider {
     List<ProductosDto> getProductos();
     ProductosDto getProductosId(Integer id);
+    ProductosDto getProductoNombre(String nombre);
     ProductosDto insertProductos(String nombre, Double precio, String descripcion, CategoriaRol categoriaRol);
     ProductosDto updateProductos(Integer id, String nombre, Double precio, String descripcion, CategoriaRol categoriaRol);
     void deleteProductosId(Integer id);

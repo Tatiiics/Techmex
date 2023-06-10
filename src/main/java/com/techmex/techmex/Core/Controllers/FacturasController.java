@@ -1,11 +1,16 @@
 package com.techmex.techmex.Core.Controllers;
 
 import com.techmex.techmex.Core.Services.IFacturasService;
+import com.techmex.techmex.Data.Entities.enums.EstadoPedidoRolEnum;
 import com.techmex.techmex.Data.Entities.enums.FormasPago;
+import com.techmex.techmex.Data.Entities.enums.ServicioEnum;
 import com.techmex.techmex.Dtos.FacturasDto;
+import com.techmex.techmex.Dtos.PedidoDTO;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -14,6 +19,7 @@ import java.util.List;
 @RequestMapping("/facturas")
 public class FacturasController {
     private final IFacturasService facturasService;
+
     @GetMapping("/lista")
     public List<FacturasDto> listaFacturas(){
         return facturasService.getListaFacturas();
@@ -25,7 +31,7 @@ public class FacturasController {
 
     @PostMapping("/insertar")
     public FacturasDto insertarFactura(Date fecha, Double total, int num_mesa, FormasPago formasPago, Integer usuario_id){
-        return facturasService.insertFacturas(fecha, total, num_mesa, formasPago, usuario_id);
+        return facturasService.insertFacturas(fecha, total, num_mesa, formasPago, usuario_id, EstadoPedidoRolEnum.PEDIDO, ServicioEnum.TOMAR);
     }
 
     @PutMapping("/actualizar/{id}")
@@ -38,8 +44,4 @@ public class FacturasController {
         facturasService.deleteFacturasId(id);
     }
 
-    @PutMapping("/comprar")
-    public void comprar(Double total) {
-        facturasService.comprar(total);
-    }
 }

@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface IProductosDao extends JpaRepository<ProductosModel, Integer> {
 
     Optional<ProductosModel>findById(Integer id);
+    Optional<ProductosModel>findByNombre(String nombre);
 }

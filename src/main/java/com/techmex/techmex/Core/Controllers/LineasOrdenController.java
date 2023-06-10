@@ -33,4 +33,9 @@ public class LineasOrdenController {
     public void borrarLineasOrden(@PathVariable Integer id){
         lineasOrdenService.deleteLineasOrden(id);
     }
+
+    @GetMapping("/listaByFacturaId")
+    public List<LineasOrdenDto> getByFacturaId(Integer id) {
+        return lineasOrdenService.getListaLineasOrdenByFacturaId(id);
+    }
 }
