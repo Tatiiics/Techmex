@@ -19,6 +19,7 @@ public interface IUsuariosProvider {
      UsuariosRegistroDto getByName(String name);
 
      UsuariosRegistroDto registrar(UsuariosRegistroDto usuariosRegistroDto);
+     boolean isAdmin(String email, String password);
 
 
 }

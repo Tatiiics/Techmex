@@ -135,5 +135,19 @@ public class UsuariosProvider implements IUsuariosProvider {
         return user.isPresent() && encoder.matches(rawPassword, user.get().getContrasenia());
     }
 
+    @Override
+    public boolean isAdmin(String email, String password) {
+        UsuariosModel usuariosModel = iUsuariosDao.findByEmail(email).orElse(null);
+
+        if(!innerMatchPassword(iUsuariosDao.findByEmail(email), password)) {
+            return false;
+        }
+        if(usuariosModel.getRole().equals(UserRole.ADMIN)) {
+            return true;
+        }
+
+        return false;
+    }
+
 
 }
