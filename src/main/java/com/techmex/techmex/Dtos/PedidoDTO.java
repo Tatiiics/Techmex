@@ -15,7 +15,7 @@ public class PedidoDTO {
 
     private Integer idFactura;
     private List<String> productos;
-    private Integer numerMesa;
+    private Integer numeroMesa;
     private String tomarLlevar;
     private String estadoPedido;
 

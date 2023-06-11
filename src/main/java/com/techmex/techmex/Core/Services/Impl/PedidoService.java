@@ -35,7 +35,7 @@ public class PedidoService implements IPedidoService {
         FacturasDto facturasDto = facturasProvider.insertFacturas(fechaactual, total, numeroMesa, FormasPago.TARJETA, 1, EstadoPedidoRolEnum.PEDIDO, ServicioEnum.TOMAR);
 
         for(int i = 0; i < lista.length; i++) {
-            ProductosDto productosDto = iProductosProvider.getProductoNombre(lista[i]);
+            ProductosDto productosDto = iProductosProvider.getProductoNombre(lista[i].replace("[", "").replace("]", "").replace("\"", ""));
             iLineasOrdenProvider.insertLineasOrden(facturasDto.getFactura_id(), productosDto.getId());
         }
     }

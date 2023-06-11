@@ -18,11 +18,11 @@ INSERT INTO USUARIOS (contrasenia, email, nombre, role) VALUES ('qwerty123', 'ma
 /*. . . . .producto_id, descripcion, nombre, precio, categoria_rol . . . . */
 
 /* . . . . . ENTRANTES . . . .*/
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Nachos "Fuego Dorado"', 'Nachos crujientes con queso cheddar, jalapeños y salsa de tomate ahumada', 7.99, 'ENTRANTES');
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Patatas "Bacon y Queso Supreme"', 'Patatas crujientes con queso cheddar, bacon y cebollino', 6.99, 'ENTRANTES');
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Chicken Nachos "Sabor Mexicano"', 'Nachos cargados con pollo sazonado, queso, guacamole y salsa picante', 9.99, 'ENTRANTES');
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Patatas Nachos "Delicia Tex-Mex"', 'Patatas sazonadas con especias tex-mex, salsa de queso y pico de gallo', 5.99, 'ENTRANTES');
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Mole "Sabor Tradicional"', 'Salsa de mole casera con chiles, especias y chocolate, servida con pollo o cerdo', 12.99, 'ENTRANTES');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Nachos Fuego Dorado', 'Nachos crujientes con queso cheddar, jalapeños y salsa de tomate ahumada', 7.99, 'ENTRANTES');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Patatas Bacon y Queso Supreme', 'Patatas crujientes con queso cheddar, bacon y cebollino', 6.99, 'ENTRANTES');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Chicken Nachos Sabor Mexicano', 'Nachos cargados con pollo sazonado, queso, guacamole y salsa picante', 9.99, 'ENTRANTES');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Patatas Nachos Delicia Tex-Mex', 'Patatas sazonadas con especias tex-mex, salsa de queso y pico de gallo', 5.99, 'ENTRANTES');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Chiles con queso', 'Una combinación de chiles picantes y queso derretido que cautiva con su sabor cremoso y picanteo', 12.99, 'ENTRANTES');
 
 /* . . . POSTRES . . .*/
 
@@ -57,7 +57,7 @@ INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Agua 
 
 INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Mahou Grifo', '50 cl', 2.49, 'BEBIDAS');
 INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Mahou 5 Estrellas', '33 cl', 2.49, 'BEBIDAS');
-INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Mahou 0,0', '33 cl', 2.49, 'BEBIDAS');
+INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Mahou Tostada', '33 cl', 2.49, 'BEBIDAS');
 INSERT INTO productos(nombre, descripcion, precio, categoria_rol) VALUES ('Coronita', '33 cl', 2.99, 'BEBIDAS');
 
 /* . . . . BEBIDAS ESPECIALES. . . . */
