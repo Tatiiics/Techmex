@@ -34,4 +34,8 @@ public class AutenticationService implements IAutenticationService {
     public boolean loginvConEmail(String email, String password) {
         return usuariosProvider.matchesPassword(email, password);
     }
+    @Override
+    public boolean isAdmin(String email, String password) {
+        return usuariosProvider.isAdmin(email,password);
+    }
 }

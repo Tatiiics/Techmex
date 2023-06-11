@@ -9,4 +9,5 @@ public interface IAutenticationService {
     boolean loginConNombre(String username, String password);
 
     boolean loginvConEmail(String email, String password);
+    boolean isAdmin(String email, String password);
 }
