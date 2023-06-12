@@ -18,5 +18,6 @@ public class PedidoDTO {
     private Integer numeroMesa;
     private String tomarLlevar;
     private String estadoPedido;
+    private String opcion;
 
 }
