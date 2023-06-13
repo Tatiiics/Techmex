@@ -23,8 +23,9 @@ public class PedidoControler {
     }
 
     @PutMapping("/comprar")
-    public void comprar(Double total, Integer numeroMesa, String[] lista) {
-        iPedidoService.comprar(total,numeroMesa, lista);
+    public void comprar(Double total, Integer numeroMesa, String[] lista, String formaPago, String opciones) {
+        System.out.println(formaPago + opciones);
+        iPedidoService.comprar(total,numeroMesa, lista, formaPago, opciones);
     }
 
     @PostMapping("/pasarEstadoHecho")

@@ -27,12 +27,12 @@ public class PedidoService implements IPedidoService {
     private final IProductosProvider iProductosProvider;
 
     @Override
-    public void comprar(Double total, Integer numeroMesa, String[] lista) {
+    public void comprar(Double total, Integer numeroMesa, String[] lista, String formaPago, String opciones) {
         Date fechaactual = new Date();
         fechaactual.getTime();
 
         //TODO MEJORAR CODIGO
-        FacturasDto facturasDto = facturasProvider.insertFacturas(fechaactual, total, numeroMesa, FormasPago.TARJETA, 1, EstadoPedidoRolEnum.PEDIDO, ServicioEnum.TOMAR);
+        FacturasDto facturasDto = facturasProvider.insertFacturas(fechaactual, total, numeroMesa, FormasPago.valueOf(formaPago.toUpperCase()), 1, EstadoPedidoRolEnum.PEDIDO, ServicioEnum.valueOf(opciones.toUpperCase()));
 
         for(int i = 0; i < lista.length; i++) {
             ProductosDto productosDto = iProductosProvider.getProductoNombre(lista[i].replace("[", "").replace("]", "").replace("\"", ""));
@@ -53,7 +53,7 @@ public class PedidoService implements IPedidoService {
                 listaProductos.add(iProductosProvider.getProductosId(lineasOrdenDtos.get(j).getProducto_id()).getNombre());
 
             }
-            listaPedidos.add(new PedidoDTO(facturasDtos.get(i).getFactura_id(),listaProductos, facturasDtos.get(i).getNum_mesa(), facturasDtos.get(i).getServicioEnum().name(), facturasDtos.get(i).getEstadoPedidoRolEnum().name()));
+            listaPedidos.add(new PedidoDTO(facturasDtos.get(i).getFactura_id(),listaProductos, facturasDtos.get(i).getNum_mesa(), facturasDtos.get(i).getServicioEnum().name(), facturasDtos.get(i).getEstadoPedidoRolEnum().name(), facturasDtos.get(i).getServicioEnum().name()));
 
         }
 
