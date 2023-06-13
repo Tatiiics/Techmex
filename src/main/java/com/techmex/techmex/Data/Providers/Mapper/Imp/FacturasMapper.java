@@ -24,7 +24,7 @@ public class FacturasMapper implements IMapper<FacturasModel, FacturasDto> {
 
         return FacturasDto.builder()
                 .factura_id(facturasModel.getFactura_id())
-                .fecha(fechaHoraEspaña)
+                .fecha(facturasModel.getFecha())
                 .total(facturasModel.getTotal())
                 .formasPago(facturasModel.getFormasPago())
                 .num_mesa(facturasModel.getNum_mesa())

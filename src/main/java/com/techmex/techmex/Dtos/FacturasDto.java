@@ -17,7 +17,7 @@ import java.util.Date;
 public class FacturasDto {
     private Integer factura_id;
 
-    private String fecha;
+    private Date fecha;
 
     private Double total;
 
