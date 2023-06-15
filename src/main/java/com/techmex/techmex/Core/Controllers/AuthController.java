@@ -36,6 +36,7 @@ public class AuthController {
     public UsuariosRegistroDto showRegistrationForm(@RequestParam("email") String email,
                                                     @RequestParam("user") String nombre,
                                                     @RequestParam("password") String contrasenia){
+        System.out.println("Hola");
         return iAutenticationService.registro(
                 UsuariosRegistroDto.builder()
                         .nombre(nombre)
